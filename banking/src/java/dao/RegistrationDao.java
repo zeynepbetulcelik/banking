@@ -7,47 +7,41 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
-import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author zeynep
  */
 
-
-
-
-
-public class LoginDAO {
-
-    /**
-     *
-     * @param user
-     * @param password
-     * @return
-     */
-  Connection conn;
+public class RegistrationDao {
+    
+    Connection conn;
 	   public void Dbaglanti() throws SQLException {
         conn = DriverManager.getConnection("jdbc:derby://localhost:1527/banking", "zeynep", "zeynep");
 
     }
-   public boolean kontrol_kullanici(String username, String password) {
-
+    
+    public boolean register(String username,String password){
+        boolean flag=true;
         try {
            Dbaglanti();
+            String sorgu = "INSERT INTO KULLANICI VALUES  (?,?)";
+            PreparedStatement pstmt = conn.prepareStatement(sorgu);
             Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT PASSWORD FROM USERS WHERE USERNAME = '" + username + "'");
-            if (rs.next()) {
-                return password.equals(rs.getString(1));
-            }
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+           st = conn.createStatement();
+            pstmt.executeUpdate();
+            flag=true;
+            
         } catch (SQLException s) {
             JOptionPane.showMessageDialog(null, "Hata: " + s.toString());
+            flag=false;
         }
-        return false;
+      return flag;
     }
-
-    
 }
