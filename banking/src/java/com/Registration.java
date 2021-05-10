@@ -29,7 +29,7 @@ import javax.faces.context.FacesContext;
  *
  * @author zeynep
  */
-@ManagedBean
+@ManagedBean()
 @SessionScoped
 public class Registration implements Serializable{
 
