@@ -7,10 +7,14 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.swing.JOptionPane;
 /**
  *
@@ -19,7 +23,8 @@ import javax.swing.JOptionPane;
 
 
 
-
+import javax.sql.DataSource;
+import javax.sql.rowset.CachedRowSet;
 
 public class LoginDAO {
 
@@ -29,16 +34,34 @@ public class LoginDAO {
      * @param password
      * @return
      */
-  Connection conn;
-	   public void Dbaglanti() throws SQLException {
-        conn = DriverManager.getConnection("jdbc:derby://localhost:1527/banking", "zeynep", "zeynep");
 
+    DataSource dataSource;
+    public LoginDAO() throws NamingException{
+    try{
+    Context ctx =new InitialContext();
+    dataSource =(DataSource) ctx.lookup("jdbc/addressbook");
+    
+    
     }
-   public boolean kontrol_kullanici(String username, String password) {
+    catch(NamingException e){
+    e.printStackTrace();
+    }
+    
+    }
+    public boolean kontrol_kullanici(String username, String password) throws SQLException{
+if ( dataSource == null )
+ throw new SQLException( "Unable to obtain DataSource" );
 
-        try {
-           Dbaglanti();
-            Statement st = conn.createStatement();
+ // obtain a connection from the connection pool
+ Connection connection = dataSource.getConnection();
+
+ // check whether connection was successful
+ if ( connection == null )
+ throw new SQLException( "Unable to connect to DataSource" );
+
+ try
+ {
+       Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("SELECT PASSWORD FROM USERS WHERE USERNAME = '" + username + "'");
             if (rs.next()) {
                 return password.equals(rs.getString(1));
@@ -47,7 +70,12 @@ public class LoginDAO {
             JOptionPane.showMessageDialog(null, "Hata: " + s.toString());
         }
         return false;
-    }
+ 
 
+
+     
+    }
+    
+ 
     
 }

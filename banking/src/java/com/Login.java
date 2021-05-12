@@ -18,6 +18,8 @@ import javax.faces.context.FacesContext;
 
 
 import dao.LoginDAO;
+import java.sql.SQLException;
+import javax.naming.NamingException;
 
 
 @ManagedBean
@@ -55,7 +57,7 @@ public class Login implements Serializable {
 	}
 
 	//validate login
-	public String validateUsernamePassword() {
+	public String validateUsernamePassword() throws NamingException, SQLException {
 		LoginDAO logindao=new LoginDAO() ;
                boolean valid= logindao.kontrol_kullanici(user, pwd);
 		if (valid) {
