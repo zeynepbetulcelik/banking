@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com;
+package controller;
 
 /**
  *
@@ -17,7 +17,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 
-import dao.LoginDAO;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 
@@ -58,7 +57,7 @@ public class Login implements Serializable {
 
 	//validate login
 	public String validateUsernamePassword() throws NamingException, SQLException {
-		LoginDAO logindao=new LoginDAO() ;
+		model.LoginDb logindao=new model.LoginDb() ;
                boolean valid= logindao.kontrol_kullanici(user, pwd);
 		if (valid) {
 			
@@ -79,4 +78,8 @@ public class Login implements Serializable {
 	
 		return "index";
 	}
+        public String Registration(){
+
+    return "registration";
+}
 }

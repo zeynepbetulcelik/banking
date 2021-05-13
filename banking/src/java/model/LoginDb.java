@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,7 +25,7 @@ import javax.swing.JOptionPane;
 import javax.sql.DataSource;
 import javax.sql.rowset.CachedRowSet;
 
-public class LoginDAO {
+public class LoginDb {
 
     /**
      *
@@ -35,7 +35,7 @@ public class LoginDAO {
      */
 
     DataSource dataSource;
-    public LoginDAO() throws NamingException{
+    public LoginDb() throws NamingException{
     try{
     Context ctx =new InitialContext();
     dataSource =(DataSource) ctx.lookup("jdbc/addressbook");
@@ -47,16 +47,11 @@ public class LoginDAO {
     }
     
     }
-    public boolean kontrol_kullanici(String username, String password) throws SQLException{
-if ( dataSource == null )
- throw new SQLException( "Unable to obtain DataSource" );
-
- // obtain a connection from the connection pool
+  public boolean kontrol_kullanici(String username, String password) throws SQLException{
+       
  Connection connection = dataSource.getConnection();
-
- // check whether connection was successful
- if ( connection == null )
- throw new SQLException( "Unable to connect to DataSource" );
+     if ( connection == null )
+     throw new SQLException( "Unable to connect to DataSource" );
 
  try
  {
@@ -65,16 +60,29 @@ if ( dataSource == null )
             if (rs.next()) {
                 return password.equals(rs.getString(1));
             }
-        } catch (SQLException s) {
+        } 
+ catch (SQLException s) {
             JOptionPane.showMessageDialog(null, "Hata: " + s.toString());
         }
         return false;
- 
-
-
-     
     }
-    
- 
-    
+  
+  public String loggedID(String username) throws SQLException{
+      String id="";
+  Connection connection = dataSource.getConnection();
+     if ( connection == null )
+     throw new SQLException( "Unable to connect to DataSource" );
+     try
+ {
+       Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("SELECT ID FROM USERS WHERE USERNAME = '" + username + "'");
+            if (rs.next()) {
+            id=rs.getString(1);
+            }
+        } 
+ catch (SQLException s) {
+            JOptionPane.showMessageDialog(null, "Hata: " + s.toString());
+        }
+     return id;
+  }
 }
