@@ -18,12 +18,29 @@ and open the template in the editor.
             <p class ="p1" value="Username">Username </p>
 		<h:inputText class ="un" id="username" value="#{registration.username}" ></h:inputText>
 		<h:message for="username"></h:message>
-		<br></br><br></br>
 		
-		<p class ="p2" value="Password">Password </p>
-		<h:inputSecret class ="pass" id="password" value="#{registration.password}"></h:inputSecret>
+		
+		<p class ="p1" value="Password">Password</p>
+		<h:inputSecret class ="pass" id="password" ></h:inputSecret>
 		<h:message for="password"></h:message>
-		<br></br><br></br>
+                
+                <p class ="p1" value="PasswordVal">Password Validation </p>
+		<h:inputSecret class ="pass" id="passwordval" ></h:inputSecret>
+		<h:message for="passwordval"></h:message>
+                
+                <p class ="p1" value="Phone">Phone Number</p>
+		<h:inputText class ="un" id="phonenumber"  ></h:inputText>
+		<h:message for="phonenumber"></h:message>
+	
+                
+                <p class ="p1" value="MailAddress">Mail Address </p>
+		<h:inputText class ="un" id="mailaddress"  ></h:inputText>
+		<h:message for="mailaddress"></h:message>
+                
+                <p class ="p1" value="Gender">Gender </p>
+                <input type="radio"></input>
+	
+		
 		
                 <h:commandButton value="Registration" action="#{registration.ValidateRegistration}"
 			></h:commandButton>

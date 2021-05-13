@@ -53,21 +53,8 @@ public class Registration implements Serializable{
     }
    
 public String ValidateRegistration(){
-RegistrationDao registration =new RegistrationDao();
-boolean valid =registration.register(username,password);
-if(valid){
-   
-            return "index";
-}
-else{
-     FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN,
-							"Incorrect Username and Passowrd",
-							"Please enter correct username and Password"));
-return "index";
-}
 
+    return "registration";
 }
 
     
