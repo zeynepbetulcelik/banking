@@ -29,8 +29,7 @@ public class DetailDb {
     public void createUser(String ID){
       try {
           Connection connection=dataSource.getConnection();
-          String query="INSERT INTO ACCOUNTS VALUES(?)";
-          
+          String query="INSERT INTO ACCOUNTS VALUES(?,?,?,?,?)";
           
       } 
       catch (SQLException ex)
