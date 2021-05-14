@@ -4,8 +4,11 @@
  * and open the template in the editor.
  */
 package controller;
-
-
-public class NewAccount {
+import static controller.Login.ID;
+/**
+ *
+ * @author zeynep
+ */
+public class CreateAccount {
     
 }

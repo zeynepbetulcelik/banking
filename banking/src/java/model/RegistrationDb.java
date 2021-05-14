@@ -36,17 +36,7 @@ public class RegistrationDb {
     e.printStackTrace();
     }
       }
-    /**
-     *
-     * @param username
-     * @param password
-     * @param email
-     * @param id
-     * @param phonenumber
-     * @param gender
-     * @return
-     * @throws SQLException
-     */
+    
     public boolean CreateUser(String id,String username,String password,String phonenumber,String email,String gender) throws SQLException{
         boolean flag=true;
          Connection connection = dataSource.getConnection();
@@ -55,16 +45,17 @@ public class RegistrationDb {
         try {
 
                 String query="INSERT INTO USERS VALUES(?,?,?,?,?,?)";
-               PreparedStatement pstmt = connection.prepareStatement(query);
+            PreparedStatement pstmt = connection.prepareStatement(query);
               Statement st = connection.createStatement();
-            pstmt.setString(1, id);
-            pstmt.setString(2, username);
-            pstmt.setString(2, password);
-            pstmt.setString(2, phonenumber);
-            pstmt.setString(2, email);
-            pstmt.setString(2, gender);
             
-       
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            pstmt.setString(3, phonenumber);
+            pstmt.setString(4, email);
+            pstmt.setString(5, gender);
+            pstmt.setString(6, id);
+            
+         st = connection.createStatement();
            pstmt.executeUpdate();
            flag=true;
             

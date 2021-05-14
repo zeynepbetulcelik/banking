@@ -67,7 +67,7 @@ public class LoginDb {
         return false;
     }
   
-  public String loggedID(String username) throws SQLException{
+  public String getID(String username) throws SQLException{
       String id="";
   Connection connection = dataSource.getConnection();
      if ( connection == null )
@@ -85,4 +85,5 @@ public class LoginDb {
         }
      return id;
   }
+
 }

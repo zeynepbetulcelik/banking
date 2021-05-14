@@ -33,7 +33,7 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 public class Registration implements Serializable{
-    private String id;
+   private String id;
    private String username;
    private String password;
    private String email;
@@ -79,15 +79,12 @@ public class Registration implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
-    public static String generateUUID(){
-    String uniqueID=UUID.randomUUID().toString();
-    return uniqueID;
-    }
+
     
    
 public String confirmedRegistration() throws SQLException, NamingException{
     model.RegistrationDb registrationdb =new model.RegistrationDb() ;
-    id=generateUUID();
+    id=util.Utils.generateUUID();
 boolean validate=registrationdb.CreateUser(id, username, password,  phonenumber,email, gender);
 if(validate){
     FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,"Success","You can sign-in"));
@@ -96,8 +93,10 @@ if(validate){
 
 else{
 FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,"Something went wrong","Please try again"));
-return "index";
+return "registration";
 }
+
+
 
 }
  

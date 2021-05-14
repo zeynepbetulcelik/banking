@@ -19,6 +19,7 @@ import javax.faces.context.FacesContext;
 
 import java.sql.SQLException;
 import javax.naming.NamingException;
+import model.LoginDb;
 
 
 @ManagedBean
@@ -30,6 +31,16 @@ public class Login implements Serializable {
 	private String pwd;
 	private String msg;
 	private String user;
+                    public static String ID;
+                    model.LoginDb logindb;
+                    
+                   
+
+    public Login() throws NamingException, SQLException {
+        this.logindb = new LoginDb();
+       ID= this.logindb.getID(user);
+    }
+               
 
 	public String getPwd() {
 		return pwd;
