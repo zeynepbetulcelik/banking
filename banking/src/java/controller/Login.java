@@ -16,81 +16,82 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-
+import model.LoginDb;
 import java.sql.SQLException;
 import javax.naming.NamingException;
 import model.LoginDb;
 
+import java.sql.ResultSet;
 
-@ManagedBean
+@ManagedBean(name = "login")
 @SessionScoped
-public class Login implements Serializable {
+public class Login  {
 
-	private static final long serialVersionUID = 1094801825228386363L;
-	
-	private String pwd;
-	private String msg;
-	private String user;
-                    public static String ID;
-                    model.LoginDb logindb;
-                    
-                   
+  
+    private String pwd;
+    private String msg;
+    private String user;
+    private String id;
 
-   
-               
+    public String getId() {
+        return id;
+    }
+    
+    public static String ID;
+    model.LoginDb logindb;
 
-	public String getPwd() {
-		return pwd;
-	}
+    public String getPwd() {
+        return pwd;
+    }
 
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 
-	public String getMsg() {
-		return msg;
-	}
+    public String getMsg() {
+        return msg;
+    }
 
-	public void setMsg(String msg) {
-		this.msg = msg;
-	}
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 
-	public String getUser() {
-		return user;
-	}
+    public String getUser() {
+        return user;
+    }
 
-	public void setUser(String user) {
-		this.user = user;
-	}
-                    public static String username;
-	//validate login
-                    
-	public String validateUsernamePassword() throws NamingException, SQLException {
-		model.LoginDb logindao=new model.LoginDb() ;
-               boolean valid= logindao.kontrol_kullanici(user, pwd);
-               username=user;
-                   // ID=logindb.getID();
-		if (valid) {
-			
-			
-			return "admin";
-		} else {
-			FacesContext.getCurrentInstance().addMessage(
-					null,
-					new FacesMessage(FacesMessage.SEVERITY_WARN,
-							"Incorrect Username and Passowrd",
-							"Please enter correct username and Password"));
-			return "index";
-		}
-	}
+    public void setUser(String user) {
+        this.user = user;
+    }
+    
 
-	//logout event, invalidate session
-	public String logout() {
-	
-		return "index";
-	}
-        public String Registration(){
 
-    return "registration";
-}
+    public String validateUsernamePassword() throws NamingException, SQLException {
+        model.LoginDb logindb = new model.LoginDb();
+
+        ResultSet result = logindb.kontrol_kullanici(user, pwd);
+
+        if (result != null) {
+          id=   result.getString("ID");
+            return "admin";
+        } else {
+            FacesContext.getCurrentInstance().addMessage(
+                    null,
+                    new FacesMessage(FacesMessage.SEVERITY_WARN,
+                            "Incorrect Username and Passowrd",
+                            "Please enter correct username and Password"));
+            return "index";
+        }
+    }
+
+    //logout event, invalidate session
+    public String logout() {
+
+        return "index";
+    }
+
+    public String Registration() {
+
+        return "registration";
+    }
 }
