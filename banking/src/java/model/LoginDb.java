@@ -43,7 +43,7 @@ public class LoginDb {
 
     }
 
-    public ResultSet kontrol_kullanici(String username, String password) throws SQLException {
+    public ResultSet control_user(String username, String password) throws SQLException {
 
         Connection connection = dataSource.getConnection();
         if (connection == null) {

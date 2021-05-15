@@ -69,7 +69,7 @@ public class Login  {
     public String validateUsernamePassword() throws NamingException, SQLException {
         model.LoginDb logindb = new model.LoginDb();
 
-        ResultSet result = logindb.kontrol_kullanici(user, pwd);
+        ResultSet result = logindb.control_user(user, pwd);
 
         if (result != null) {
           id=   result.getString("ID");
