@@ -16,6 +16,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.swing.JOptionPane;
+import static controller.Login.username;
 /**
  *
  * @author zeynep
@@ -67,7 +68,7 @@ public class LoginDb {
         return false;
     }
   
-  public String getID(String username) throws SQLException{
+  public String getID() throws SQLException{
       String id="";
   Connection connection = dataSource.getConnection();
      if ( connection == null )
@@ -86,4 +87,5 @@ public class LoginDb {
      return id;
   }
 
+  
 }

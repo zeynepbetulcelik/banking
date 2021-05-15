@@ -37,6 +37,8 @@ public class NewAccountDb {
 
         public boolean NewAccount(String user_id, String account_name, String account_type) throws SQLException{
             boolean flag=true;
+             model.LoginDb logindb;
+             
             String account_id =util.Utils.generateUUID();
 Connection connection = dataSource.getConnection();
 if(connection==null)
@@ -46,8 +48,8 @@ try{
 PreparedStatement pstmt = connection.prepareStatement(query);
 Statement st = connection.createStatement();
 
-        pstmt.setString(1, user_id);
-        pstmt.setString(2, account_id);
+        pstmt.setString(1, account_id);
+        pstmt.setString(2, user_id);
         pstmt.setString(3,account_type);
         pstmt.setDouble(4,0);
         pstmt.setString(5,account_name);

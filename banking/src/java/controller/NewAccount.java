@@ -12,18 +12,37 @@ import javax.naming.NamingException;
 import static controller.Login.ID;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-@ManagedBean
-@SessionScoped
 
 
 /**
  *
  * @author omerc
  */
+
+@ManagedBean (name="sample")
+@SessionScoped
+
 public class NewAccount  implements Serializable{
     private String account_type;
     private String account_name;
+      
     
+    public void setAccount_type(String account_type) {
+        this.account_type = account_type;
+    }
+    public String getAccount_type() {
+        return account_type;
+    }
+
+    
+   public void setAccount_name(String account_name) {
+        this.account_name = account_name;
+    }
+    public String getAccount_name() {
+        return account_name;
+    }
+
+ 
 
 public String confirmedNewAccount() throws SQLException, NamingException{
     model.NewAccountDb newaccountdb =new model.NewAccountDb();
@@ -39,20 +58,6 @@ return "newaccount";
 }
 }
 
-    public String getAccount_type() {
-        return account_type;
-    }
 
-    public void setAccount_type(String account_type) {
-        this.account_type = account_type;
-    }
-
-    public String getAccount_name() {
-        return account_name;
-    }
-
-    public void setAccount_name(String account_name) {
-        this.account_name = account_name;
-    }
 }
 

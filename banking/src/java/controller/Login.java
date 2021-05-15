@@ -36,10 +36,7 @@ public class Login implements Serializable {
                     
                    
 
-    public Login() throws NamingException, SQLException {
-        this.logindb = new LoginDb();
-       ID= this.logindb.getID(user);
-    }
+   
                
 
 	public String getPwd() {
@@ -65,11 +62,14 @@ public class Login implements Serializable {
 	public void setUser(String user) {
 		this.user = user;
 	}
-
+                    public static String username;
 	//validate login
+                    
 	public String validateUsernamePassword() throws NamingException, SQLException {
 		model.LoginDb logindao=new model.LoginDb() ;
                boolean valid= logindao.kontrol_kullanici(user, pwd);
+               username=user;
+                   // ID=logindb.getID();
 		if (valid) {
 			
 			

@@ -272,8 +272,8 @@ span.choose {
      <h4 style="text-align: center; font-family: Calibri; font-size: 50px">OLUŞTURMAK İSTEDİĞİNİZ HESABIN ÖZELLİKLERİNİ GİRİNİZ</h4>
      <h:form class="form2">
      <br>Hesap ismini giriniz</br>
-             <input type="text" name="hesapid" id="account_name" value="#{newaccount.account_name}"></input>
-             
+            
+             <h:inputText  class ="un" id="account_name" value="#{sample.account_name}" ></h:inputText>
      <label>Hesap Türünü giriniz</label>
       <div class="dropdown">
           
@@ -281,8 +281,8 @@ span.choose {
           <span>...</span>
           <i class="fa fa-chevron-left"></i>
         </div>
-          <input type="hidden" name="hesapturu" id="account_type" value="#{newaccount.account_type}"></input>
           
+          <h:inputText  class ="un" id="account_type" value="#{sample.account_type}"></h:inputText>
         <ul class="dropdown-menu">
           <li id="dovizhesabi">Döviz Hesabı</li>
           <li id="altinhesabi">Altın Hesabı</li>
@@ -290,7 +290,7 @@ span.choose {
         </ul>
           
       </div>
-     <h:commandButton value="OK" action = "#{newaccount.confirmedNewAccount}"></h:commandButton>
+     <h:commandButton value="OK" action = "#{sample.confirmedNewAccount}"></h:commandButton>
 	</h:form>
   
   <span class="msg"></span>
