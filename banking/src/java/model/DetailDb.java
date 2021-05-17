@@ -46,9 +46,9 @@ public ResultSet getAccounts() throws SQLException {
                PreparedStatement ps = con.prepareStatement(sql);
                ps.setString(1, util.generateUUID());
                ps.setString(2, id);
-               ps.setString(3, account_name);
+               ps.setString(3, account_type);
                ps.setDouble(4, 0);
-               ps.setString(5, account_type);
+               ps.setString(5, account_name);
 
                ps.executeUpdate();
 
