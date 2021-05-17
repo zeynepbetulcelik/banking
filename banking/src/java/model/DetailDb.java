@@ -22,9 +22,9 @@ public class DetailDb {
 public ResultSet getAccounts() throws SQLException {
           Connection con = Db.getInstance().getConnection();
         PreparedStatement object1 = con.prepareStatement(
- "select ACCOUNTS.ACCOUNT_NAME,USERS.USERNAME " +
-"from ACCOUNTS, USERS " +
-"where ACCOUNTS.ACCOUNT_USER_ID=USERS.ID " 
+ "select ACCOUNTS.ACCOUNT_NAME, ACCOUNTS.ACCOUNT_TYPE, ACCOUNTS.ACCOUNT_BALANCE  " +
+"from ACCOUNTS " +
+"where ACCOUNTS.ACCOUNT_USER_ID='"+Person.PersonInstance.getId()+"'" 
 );
  CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
   resultSet1.populate( object1.executeQuery() );

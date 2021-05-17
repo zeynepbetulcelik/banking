@@ -18,6 +18,15 @@ and open the template in the editor.
         <script>
         </script>
         <style>
+              .buttons input {
+                    margin: 5px;
+                    padding: 5px 5px 5px 20px; /* 20px makes room for your background image */
+                    border: 1px solid #aaa;
+               }
+
+               .buttons .apply {
+                    background: #eee url(path/to/apply.png) no-repeat 0 50%;
+               } 
             body {
                 font-family: "Lato", sans-serif;
             }
@@ -82,21 +91,21 @@ and open the template in the editor.
             <div class="container">
                
                     
-                    <h:dataTable value="#{detail.accounts}" var="person"> 
+                 <h:dataTable value="#{detail.getAccounts()}" var="person"> 
                         <div class="row">
                         <div class="col-4">
                             <h:column>
 
                                 <h:form class="form-group">
 
-                                    <div class="card mt-5 w-100" style="background-color: #FFFFF0; overflow: auto; width: max-content;">
+                                    <div class="card mt-5 w-100" style="background-color: #111; overflow: auto; width: max-content;">
                                         <div class="card-header">
-                                            <h3  class="card-text text-secondary lead font-weight-bold pl-5">#{person.ACCOUNT_NAME} </h3>
+                                             <h3  class="card-text text-secondary lead font-weight-bold pl-5">#{person.ACCOUNT_NAME}  </h3>
                                         </div>
                                         <div class="card-body mt-2">
                                             <p  class="card-text text-secondary lead font-weight-bold">#{person.ACCOUNT_TYPE}</p>
                                         </div>
-                                        <div class="card-footer" style="background-color: #FFFFF0;">
+                                        <div class="card-footer" style="background-color: #111;">
                                             <p  class="card-text text-secondary lead font-weight-bold">#{person.ACCOUNT_BALANCE}</p>
                                         </div>
                                     </div>
