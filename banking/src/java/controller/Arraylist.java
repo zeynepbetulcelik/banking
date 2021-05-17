@@ -9,9 +9,6 @@ package controller;
  *
  * @author zeynep
  */
-public class Homepage {
-   
-    
-    
-    
+public class Arraylist {
+     
 }

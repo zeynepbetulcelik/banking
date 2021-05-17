@@ -17,8 +17,5 @@ public class Utils {
     return uniqueID;
     }
         
-    public static void main(String args[]){
-    System.out.println(generateUUID());
-    System.out.print(generateUUID());
-    }
+  
 }

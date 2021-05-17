@@ -15,7 +15,7 @@
     .main {
         background-color: #FFFFFF;
         width: 400px;
-        height: 400px;
+        height: 450px;
         margin: 7em auto;
         border-radius: 1.5em;
         box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
@@ -83,10 +83,26 @@
          text-align: center;
     }
       .submit {
-      cursor: pointer;
+        cursor: pointer;
         border-radius: 5em;
         color: #fff;
-        
+ 
+        background: linear-gradient(to right, #666666,#cc0033 );
+        border: 0;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-left: 37%;
+        font-size: 13px;
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+    }
+    .register{
+         cursor: pointer;
+        border-radius: 5em;
+        color: #fff;
+ 
         background: linear-gradient(to right, #666666,#cc0033 );
         border: 0;
         padding-left: 40px;
@@ -107,18 +123,19 @@
 	<h:form class="form1">
 		
             <p class ="p1" value="Username">Username </p>
-		<h:inputText class ="un" id="username" value="#{login.user}" ></h:inputText>
+            <h:inputText class ="un" id="username" value="#{personcontroller.person.username}" ></h:inputText>
 		<h:message for="username"></h:message>
 		<br></br><br></br>
 		
 		<p class ="p2" value="Password">Password </p>
-		<h:inputSecret class ="pass" id="password" value="#{login.pwd}"></h:inputSecret>
+              <h:inputSecret class ="pass" id="password" value="#{personcontroller.person.password}"></h:inputSecret>
 		<h:message for="password"></h:message>
 		<br></br><br></br>
 		
-		<h:commandButton class="submit" action="#{login.validateUsernamePassword}"
+              <h:commandButton class="submit" action="#{personcontroller.Login()}"
 			value="Login"></h:commandButton>
-                <h:commandButton class="submit" action="#{login.Registration}"
+              <br></br>
+              <h:commandButton class="register" action="#{personcontroller.Registration()}"
 			value="Register"></h:commandButton>
 	</h:form>
      </div>

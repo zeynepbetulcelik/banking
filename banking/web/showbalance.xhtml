@@ -7,7 +7,7 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
      <h:head>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
@@ -67,138 +67,41 @@ and open the template in the editor.
                }
           </style>
      </h:head>
-     <body>
+     <h:body>
+ 
+          <ui:insert name = "sidenav" >
 
-          <div class="sidenav">
-               <h3>Menü</h3>
-               <div id="accordion" style="margin-left:6px; margin-right:6px;" >
+          <ui:include src = "/templates/sidebar.xhtml" />
+        
+     </ui:insert> 
 
-                    <div class="card">
-                         <div class="card-header" id="headingOne">
-                              <h5 class="mb-0">
-                                   <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Hesaplarım
-                                   </button>
-                              </h5>
-                         </div>
+              <div class="main">
+                   
+                   <h:dataTable value="#{detail.accounts}" var="person">
+                                            <h:column>
+                                                <div class="w-100 mt-5">
+                                                    <h:form class="form-group">
 
-                         <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                              <div class="card-body">
-                                   <a href="/banking/faces/newaccount.xhtml" role="button" aria-pressed="true">Yeni Hesap</a>
-                                   <a href="/banking/faces/deleteaccount.xhtml" role="button" aria-pressed="true">Hesap Silme</a>
-                                   <a href="/banking/faces/showbalance.xhtml" role="button" aria-pressed="true">Görüntüle</a>
-                              </div>
-                         </div>
-                    </div>
-                    <div class="card">
-                         <div class="card-header" id="headingTwo">
-                              <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Para Transferleri
-                                   </button>
-                              </h5>
-                         </div>
-                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                              <div class="card-body">
-                                   <a href="/banking/faces/insidetransfer.xhtml" role="button" aria-pressed="true">Hesaplarım Arası</a>
-                                   <a href="/banking/faces/outsidetransfer.xhtml" role="button" aria-pressed="true">Başka Hesaba</a>
-                                   <a href="/banking/faces/transactionHistory.xhtml" role="button" aria-pressed="true">İşlem Geçmişi</a>
-                                   <a href="/banking/faces/registeredAccounts.xhtml" role="button" aria-pressed="true">Kayıtlı Alıcılar</a>
+                                                        <div class="card mt-5 w-100" style="background-color: #FFFFF0; overflow: auto; width: max-content;">
+                                                            <div class="card-header">
+                                                                 <h3  class="card-text text-secondary lead font-weight-bold pl-5">#{person.ACCOUNT_NAME} </h3>
+                                                            </div>
+                                                            <div class="card-body mt-2">
+                                                                 <p  class="card-text text-secondary lead font-weight-bold"></p>
+                                                            </div>
+                                                            <div class="card-footer" style="background-color: #FFFFF0;">
+                                                                 <p class="card-text text-right text-secondary pt-1"></p>
+                                                            </div>
+                                                        </div>
 
-                              </div>
-                         </div>
-                    </div>
-                    <div class="card">
-                         <div class="card-header" id="headingThree">
-                              <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Kartlarım
-                                   </button>
-                              </h5>
-                         </div>
-                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                              <div class="card-body">
-                                   <a href="/banking/faces/creditCard.xhtml" role="button" aria-pressed="true">Kredi Kartlarım</a>
-                                   <a href="/banking/faces/debitCard.xhtml" role="button" aria-pressed="true">Banka Kartlarım</a>
-                                   <a href="/banking/faces/virtualCard.xhtml" role="button" aria-pressed="true">Sanal Kartlarım</a>
-                              </div>
-                         </div>
-                    </div>
-                    <div class="card">
-                         <div class="card-header" id="headingFour">
-                              <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        Ödemeler
-                                   </button>
-                              </h5>
-                         </div>
-                         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-                              <div class="card-body">
-                                   <a href="/banking/faces/payBills.xhtml" role="button" aria-pressed="true">Fatura Ödeme</a>
+                                                    </h:form>
+                                                </div>
+                                            </h:column>
 
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="card">
-                         <div class="card-header" id="headingFive">
-                              <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                        Döviz
-                                   </button>
-                              </h5>
-                         </div>
-                         <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-                              <div class="card-body">
-                                   <a href="/banking/faces/currencyBanking.xhtml" role="button" aria-pressed="true">Döviz İşlemleri</a>
-                                   <a href="/banking/faces/goldBanking.xhtml" role="button" aria-pressed="true">Altın İşlemleri</a>
-
-                              </div>
-                         </div>
-                    </div>
-                    <div class="card">
-                         <div class="card-header" id="headingSix">
-                              <h5 class="mb-0">
-                                   <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                        Başvurular
-                                   </button>
-                              </h5>
-                         </div>
-                         <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
-                              <div class="card-body">
-                                   <a href="/banking/faces/creditApplication.xhtml" role="button" aria-pressed="true">Kredi Başvurusu</a>
-                                   <a href="/banking/faces/creditCardApplications.xhtml" role="button" aria-pressed="true">Kredi Kartı Başvurusu</a>
-                                   <a href="/banking/faces/creditCardLimitApplications.xhtml" role="button" aria-pressed="true">K.K. Limit Başvurusu</a>
-                              </div>
-                         </div>
-                    </div>
-               </div>
-
-          </div>
-          <h:dataTable value="#{detail.getBalancebyID(login.id)}" var="myvariable" border="1" cellpadding="5" cellspacing="0">
-            <h:column>
-      <f:facet name="header">Müşteri Id</f:facet>#{myvariable.ACCOUNT_NAME}
-                        </h:column></h:dataTable>
-          <div class="main">
-               <div class="row">
-                    <div class="col-md-4">
-                         <div class="card" style="width: 18rem;">
-                              <div class="card-body">
-                                   <h5 class="card-title">#{detail.getBalancebyID(login.id)}</h5>
-                                   <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                   <a href="#" class="card-link">Card link</a>
-                                   <a href="#" class="card-link">Another link</a>
-                              </div>
-                         </div>
-                    </div>
-                            
-               </div> 
-          </div>
-
+                                        </h:dataTable>
          
-          
-     </body>
+              </div>
+     </h:body>
 
 
 </html>

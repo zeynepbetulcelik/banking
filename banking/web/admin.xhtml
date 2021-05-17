@@ -6,7 +6,8 @@ and open the template in the editor.
 -->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
     <h:head>
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
@@ -16,8 +17,7 @@ and open the template in the editor.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <script>
-</script>
+ <link rel="stylesheet" type="text/css" href="/templates/sidebar.css"></link>
  <style>
   body {
   font-family: "Lato", sans-serif;
@@ -68,114 +68,13 @@ and open the template in the editor.
 }
 </style>
 </h:head>
-<body>
+<h:body>
 
-<div class="sidenav">
-    <h3>Menü</h3>
-  <div id="accordion" style="margin-left:6px; margin-right:6px;" >
-      
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Hesaplarım
-        </button>
-      </h5>
-    </div>
+      <ui:insert name = "sidenav" >
 
-    <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-            <a href="/banking/faces/newaccount.xhtml" role="button" aria-pressed="true">Yeni Hesap</a>
-           <a href="/banking/faces/deleteaccount.xhtml" role="button" aria-pressed="true">Hesap Silme</a>
-              <a href="/banking/faces/showbalance.xhtml" role="button" aria-pressed="true">Görüntüle</a>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Para Transferleri
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-            <a href="/banking/faces/insidetransfer.xhtml" role="button" aria-pressed="true">Hesaplarım Arası</a>
-             <a href="/banking/faces/outsidetransfer.xhtml" role="button" aria-pressed="true">Başka Hesaba</a>
-             <a href="/banking/faces/transactionHistory.xhtml" role="button" aria-pressed="true">İşlem Geçmişi</a>
-             <a href="/banking/faces/registeredAccounts.xhtml" role="button" aria-pressed="true">Kayıtlı Alıcılar</a>
-          
-      </div>
-    </div>
-  </div>
-      <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Kartlarım
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-             <a href="/banking/faces/creditCard.xhtml" role="button" aria-pressed="true">Kredi Kartlarım</a>
-             <a href="/banking/faces/debitCard.xhtml" role="button" aria-pressed="true">Banka Kartlarım</a>
-             <a href="/banking/faces/virtualCard.xhtml" role="button" aria-pressed="true">Sanal Kartlarım</a>
-      </div>
-    </div>
-  </div>
-      <div class="card">
-    <div class="card-header" id="headingFour">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Ödemeler
-        </button>
-      </h5>
-    </div>
-    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-      <div class="card-body">
-             <a href="/banking/faces/payBills.xhtml" role="button" aria-pressed="true">Fatura Ödeme</a>
-       
-      </div>
-    </div>
-  </div>
-      
-  <div class="card">
-    <div class="card-header" id="headingFive">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Döviz
-        </button>
-      </h5>
-    </div>
-    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-      <div class="card-body">
-         <a href="/banking/faces/currencyBanking.xhtml" role="button" aria-pressed="true">Döviz İşlemleri</a>
-             <a href="/banking/faces/goldBanking.xhtml" role="button" aria-pressed="true">Altın İşlemleri</a>
-           
-      </div>
-    </div>
-  </div>
-      <div class="card">
-    <div class="card-header" id="headingSix">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Başvurular
-        </button>
-      </h5>
-    </div>
-    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
-      <div class="card-body">
-            <a href="/banking/faces/creditApplication.xhtml" role="button" aria-pressed="true">Kredi Başvurusu</a>
-             <a href="/banking/faces/creditCardApplications.xhtml" role="button" aria-pressed="true">Kredi Kartı Başvurusu</a>
-             <a href="/banking/faces/creditCardLimitApplications.xhtml" role="button" aria-pressed="true">K.K. Limit Başvurusu</a>
-      </div>
-    </div>
-  </div>
-</div>
-    
-</div>
+          <ui:include src = "/templates/sidebar.xhtml" />
+        
+     </ui:insert> 
 
 <div class="main">
  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -201,7 +100,7 @@ and open the template in the editor.
 </div>
 </div>
    
-</body>
+</h:body>
 
 
 </html>

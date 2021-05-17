@@ -1,67 +1,64 @@
 package model;
 
+import entity.Account;
+import entity.Person;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 import javax.sql.rowset.CachedRowSet;
-import javax.swing.JOptionPane;
 
-@ManagedBean(name="detail")
+
+import util.Db;
+import util.Utils;
+@ManagedBean( name="detail" )
 public class DetailDb {
 
-     DataSource dataSource;
+     
+public ResultSet getAccounts() throws SQLException {
+          Connection con = Db.getInstance().getConnection();
+        PreparedStatement object1 = con.prepareStatement(
+ "select ACCOUNTS.ACCOUNT_NAME,USERS.USERNAME " +
+"from ACCOUNTS, USERS " +
+"where ACCOUNTS.ACCOUNT_USER_ID=USERS.ID " 
+);
+ CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
+  resultSet1.populate( object1.executeQuery() );
+  return resultSet1;
 
-     public DetailDb() throws NamingException {
-          try {
-               Context ctx = new InitialContext();
-               dataSource = (DataSource) ctx.lookup("jdbc/addressbook");
-
-          } catch (NamingException e) {
-               e.printStackTrace();
-          }
-
+         
+     
      }
 
-     public void createUser(String ID) {
+     public boolean registAccount(String account_name, String account_type, String id) {
+          Connection con = Db.getInstance().getConnection();
+          boolean status = false;
+          int count = 0;
+
+          Utils util = new Utils();
+
+          String sql = "INSERT INTO ACCOUNTS VALUES(?,?,?,?,?)";
           try {
-               Connection connection = dataSource.getConnection();
-               String query = "INSERT INTO ACCOUNTS VALUES(?,?,?,?,?)";
+               PreparedStatement ps = con.prepareStatement(sql);
+               ps.setString(1, util.generateUUID());
+               ps.setString(2, id);
+               ps.setString(3, account_name);
+               ps.setDouble(4, 0);
+               ps.setString(5, account_type);
 
-          } catch (SQLException ex) {
-               Logger.getLogger(DetailDb.class.getName()).log(Level.SEVERE, null, ex);
+               ps.executeUpdate();
+
+          } catch (SQLException e) {
+               System.out.println(e.getMessage());
           }
-
-     }
-
-     public ResultSet getBalancebyID(String ID) throws SQLException {
-          Connection connection = dataSource.getConnection();
-          if (connection == null) {
-               throw new SQLException("Unable to connect to DataSource");
+          if (count != 0) {
+               status = true;
           }
-
-          try {
-               PreparedStatement object1 = connection.prepareStatement(
-   "select * " +"from ACCOUNTS " +"where ACCOUNTS.ACCOUNT_USER_ID= '"+ID+"'");
-        CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
-     resultSet1.populate( object1.executeQuery() );
-     return resultSet1;
-                
-          } catch (SQLException s) {
-               JOptionPane.showMessageDialog(null, "Hata: " + s.toString());
-               return null;
-          }
-
+          return status;
      }
 
 }
-
-
