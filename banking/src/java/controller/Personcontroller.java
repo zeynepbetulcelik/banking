@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import model.PersonDb;
+import model.DetailDb;
 
 /**
  *
@@ -21,13 +22,32 @@ public class Personcontroller {
 
      private PersonDb persondb;
      private Person person;
+     private DetailDb detaildb;
+     private double miktar;
 
+    public double getMiktar() {
+        return miktar;
+    }
+
+    public void setMiktar(double miktar) {
+        this.miktar = miktar;
+    }
      public Personcontroller() {
           this.person = new Person();
           this.persondb = new PersonDb();
           Person.PersonInstance = this.person;
-
+          this.detaildb = new DetailDb();
+          this.miktar = miktar;
      }
+
+    public DetailDb getDetaildb() {
+        return detaildb;
+    }
+
+    public void setDetaildb(DetailDb detaildb) {
+        this.detaildb = detaildb;
+    }
+     
 
      public PersonDb getPersondb() {
           return persondb;
@@ -74,7 +94,14 @@ public class Personcontroller {
            return "index";
        }
         
-               
-        
-
-}
+        public String payBill(String type) throws SQLException{
+           boolean valid1 = detaildb.payBill(type, miktar);
+           
+            if(valid1){
+               return "payBills";
+           } else{
+                return "payBills";
+            }
+        }
+            
+        }

@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.sql.rowset.CachedRowSet;
 import util.Db;
@@ -99,11 +101,30 @@ public class DetailDb {
      public ResultSet billandbalance(String type) throws SQLException{
       Connection con = Db.getInstance().getConnection();
       
-      String sql ="SELECT* FROM BILLS INNER JOIN  USERS ON USERS.ID=BILLS.USER_ID WHERE USER_ID = '"+Person.PersonInstance.getId()+"' and TYPE = '"+ type+"'";
+      String sql ="SELECT * FROM BILLS INNER JOIN  USERS ON USERS.ID=BILLS.USER_ID WHERE USER_ID = '"+Person.PersonInstance.getId()+"' and TYPE = '"+ type+"'";
       PreparedStatement object1 = con.prepareStatement(sql);
           CachedRowSet rs = new com.sun.rowset.CachedRowSetImpl();
           rs.populate(object1.executeQuery());
      return rs;
+     }    
+     
+     public boolean payBill(String type, Double miktar) throws SQLException {
+      Connection con = Db.getInstance().getConnection();
+      
+      String sql ="DELETE FROM BILLS WHERE BILLS.USER_ID = '"+Person.PersonInstance.getId()+"' and BILLS.TYPE = '"+ type+"'AND BILLS.QUANTITY= miktar";
+      PreparedStatement object1 = null;
+      boolean flag = false;
+      
+         try {
+             object1 = con.prepareStatement(sql);
+         flag = true;
+         } catch (SQLException ex) {
+             flag=false;
+             Logger.getLogger(DetailDb.class.getName()).log(Level.SEVERE, null, ex);
+         }
+          CachedRowSet rs = new com.sun.rowset.CachedRowSetImpl();
+          rs.populate(object1.executeQuery());
+     return flag;
      }    
 
 }

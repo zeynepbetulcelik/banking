@@ -159,24 +159,25 @@ and open the template in the editor.
 
                                         <div class="input-group mb-3">
                                              <p>TOPLAM BORCUNUZ:
-                                                  <h:dataTable value="#{billcontroller.getBillAmountbyType('TV')}" var="billtype" >
+                                           <h:dataTable value="#{billcontroller.getBillAmountbyType('TV')}" var="billtype" >
 
                                                        <h:column>
-                                                            <p>#{billtype.sumquantity}</p>  
+                                                            <p>#{billtype.sumquantity}</p>
                                                        </h:column>
                                                   </h:dataTable></p>
                                              <h:dataTable value="#{detail.billandbalance('TV')}" var="billbalance">
                                                   <h:column>
-                                                       <p> <h:form><input type="text" class="form-control" placeholder="Miktarı Giriniz" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                                                 </input> 
-                                                                 <h:commandButton class="ode" value="öde" 
+                                                      <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
+                                                               <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('TV')}"
+                                                                                  
                                                                                   ></h:commandButton>
-                                                                 
+
                                                             </h:form>
-                                                       </p>   
+                                                       </p> 
+                                                         <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
                                                   </h:column>
-                                                  <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
-                                             </h:dataTable> 
+
+                                             </h:dataTable>
 
 
 

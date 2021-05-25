@@ -50,7 +50,7 @@ public class PersonDb {
           Utils util = new Utils();
           person.setId(util.generateUUID());
 
-          String sql = "INSERT INTO USERS VALUES(?,?,?,?,?,?)";
+          String sql = "INSERT INTO USERS VALUES(?,?,?,?,?,?,?)";
 
           try {
                PreparedStatement ps = con.prepareStatement(sql);
@@ -60,6 +60,7 @@ public class PersonDb {
                ps.setString(4, person.getEmail());
                ps.setString(5, person.getGender());
                ps.setString(6, person.getId());
+               ps.setDouble(7,0);
                ps.executeUpdate();
                status=true;
 
