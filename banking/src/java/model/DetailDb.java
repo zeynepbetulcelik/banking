@@ -26,6 +26,28 @@ public class DetailDb {
 
      }
 
+
+     
+     public ResultSet getCreditCards() throws SQLException {
+          Connection con = Db.getInstance().getConnection();
+          String sql= "select *  from CREDIT_CARDS INNER JOIN USERS ON USERS.ID = CREDIT_CARDS.USER_ID where CREDIT_CARDS.USER_ID = '" + Person.PersonInstance.getId() + "'";
+          PreparedStatement object1 = con.prepareStatement(sql);
+          CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
+          resultSet1.populate(object1.executeQuery());
+          return resultSet1;
+
+     }
+     
+     public ResultSet getDebitCards() throws SQLException {
+          Connection con = Db.getInstance().getConnection();
+          String sql= "select *  from DEBIT_CARDS INNER JOIN USERS ON USERS.ID = DEBIT_CARDS.USER_ID where DEBIT_CARDS.USER_ID = '" + Person.PersonInstance.getId() + "'";
+          PreparedStatement object1 = con.prepareStatement(sql);
+          CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
+          resultSet1.populate(object1.executeQuery());
+          return resultSet1;
+
+     }
+     
      public boolean registAccount(String account_name, String account_type, String id) {
           Connection con = Db.getInstance().getConnection();
           boolean status = false;
