@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -111,20 +112,24 @@ public class DetailDb {
      public boolean payBill(String type, Double miktar) throws SQLException {
       Connection con = Db.getInstance().getConnection();
       
-      String sql ="DELETE FROM BILLS WHERE BILLS.USER_ID = '"+Person.PersonInstance.getId()+"' and BILLS.TYPE = '"+ type+"'AND BILLS.QUANTITY= miktar";
-      PreparedStatement object1 = null;
+     
+     
       boolean flag = false;
       
          try {
-             object1 = con.prepareStatement(sql);
-         flag = true;
+           Statement stmt=con.createStatement();
+            String sql ="DELETE FROM BILLS WHERE BILLS.USER_ID = '"+Person.PersonInstance.getId()+"' and BILLS.TYPE = '"+ type+"'AND BILLS.QUANTITY="+miktar+"";
+            stmt.executeUpdate(sql);
+                 flag = true;
          } catch (SQLException ex) {
              flag=false;
-             Logger.getLogger(DetailDb.class.getName()).log(Level.SEVERE, null, ex);
+              ex.printStackTrace();
          }
-          CachedRowSet rs = new com.sun.rowset.CachedRowSetImpl();
-          rs.populate(object1.executeQuery());
+        
+          
      return flag;
-     }    
-
+     } 
+    /* public void updatetotalbalance(){
+     }
+*/
 }
