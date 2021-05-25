@@ -9,16 +9,16 @@ and open the template in the editor.
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-    <h:head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <script>
-        </script>
-        <style>
-              .buttons input {
+     <h:head>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <script>
+          </script>
+          <style>
+               .buttons input {
                     margin: 5px;
                     padding: 5px 5px 5px 20px; /* 20px makes room for your background image */
                     border: 1px solid #aaa;
@@ -27,102 +27,107 @@ and open the template in the editor.
                .buttons .apply {
                     background: #eee url(path/to/apply.png) no-repeat 0 50%;
                } 
-            body {
-                font-family: "Lato", sans-serif;
-            }
+               body {
+                    font-family: "Lato", sans-serif;
+               }
 
-            .sidenav {
+               .sidenav {
 
-                height: 100%;
-                width: 250px;
-                position: fixed;
-                z-index: 1;
-                top: 0;
-                left: 0;
-                background-color: #111;
-                overflow-x: hidden;
-                padding-top: 20px;
+                    height: 100%;
+                    width: 250px;
+                    position: fixed;
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                    background-color: #111;
+                    overflow-x: hidden;
+                    padding-top: 20px;
 
-            }
+               }
 
-            .sidenav a {
-                padding: 6px 8px 6px 16px;
-                text-decoration: none;
-                font-size: 25px;
-                color: #818181;
-                display: block;
-            }
+               .sidenav a {
+                    padding: 6px 8px 6px 16px;
+                    text-decoration: none;
+                    font-size: 25px;
+                    color: #818181;
+                    display: block;
+               }
 
-            .sidenav a:hover {
-                color: #f1f1f1;
-            }
-            .sidenav h3{
-                color: #ffffff;
-                display:flex;
-                justify-content: center;
+               .sidenav a:hover {
+                    color: #f1f1f1;
+               }
+               .sidenav h3{
+                    color: #ffffff;
+                    display:flex;
+                    justify-content: center;
 
-            }
-
-
-            .main {
-                margin-left: 250px; /* Same as the width of the sidenav */
-                font-size: 28px; /* Increased text to enable scrolling */
-                padding: 0px 10px;
-            }
-
-            @media screen and (max-height: 450px) {
-                .sidenav {padding-top: 15px;}
-                .sidenav a {font-size: 18px;}
-            }
-        </style>
-    </h:head>
-    <h:body>
-
-        <ui:insert name = "sidenav" >
-
-            <ui:include src = "/templates/sidebar.xhtml" />
-
-        </ui:insert> 
-
-        <div class="main">
-            <ui:insert name ="navbar">
-                <ui:include src = "/templates/navbar.xhtml" />
-            </ui:insert> 
-            <div class="container">
-               
-                    
-                 <h:dataTable value="#{detail.getAccounts()}" var="person"> 
-                        <div class="row">
-                        <div class="col-4">
-                            <h:column>
-
-                                <h:form class="form-group">
-
-                                    <div class="card mt-5 w-100" style="background-color: #111; overflow: auto; width: max-content;">
-                                        <div class="card-header">
-                                             <h3  class="card-text text-secondary lead font-weight-bold pl-5">#{person.ACCOUNT_NAME}  </h3>
-                                        </div>
-                                        <div class="card-body mt-2">
-                                            <p  class="card-text text-secondary lead font-weight-bold">#{person.ACCOUNT_TYPE}</p>
-                                        </div>
-                                        <div class="card-footer" style="background-color: #111;">
-                                            <p  class="card-text text-secondary lead font-weight-bold">#{person.ACCOUNT_BALANCE}</p>
-                                        </div>
-                                    </div>
-
-                                </h:form>
+               }
 
 
-                            </h:column>
-                        </div> 
-                        </div>
-                    </h:dataTable>
-                </div>
-            
-          
-        </div>
+               .main {
+                    margin-left: 250px; /* Same as the width of the sidenav */
+                    font-size: 28px; /* Increased text to enable scrolling */
+                    padding: 0px 10px;
+               }
 
-    </h:body>
+               @media screen and (max-height: 450px) {
+                    .sidenav {padding-top: 15px;}
+                    .sidenav a {font-size: 18px;}
+               }
+               .col-4{
+                    border:2px solid #818181;
+               }
+          </style>
+     </h:head>
+     <h:body>
+
+          <ui:insert name = "sidenav" >
+
+               <ui:include src = "/templates/sidebar.xhtml" />
+
+          </ui:insert> 
+
+          <div class="main">
+               <ui:insert name ="navbar">
+                    <ui:include src = "/templates/navbar.xhtml" />
+               </ui:insert> 
+               <div class="container">
+
+                    <h2 style="padding-left:480px">Hesaplarınız</h2>
+                    <h:dataTable value="#{detail.getAccounts()}" var="person"> 
+                         <div class="row ">
+                              <div class="col-4" >
+
+                                   <h:column>
+
+                                        <h:form class="form-group">
+
+                                             <div class="card mt-5 w-100" style="background-color: #111; overflow: auto; width: max-content;">
+                                                  <div class="card-body mt-2">
+                                                       <p class="card-text text-secondary lead font-weight-bold ">Hesap ismi: #{person.ACCOUNT_NAME}  </p>
+                                                  </div>
+                                                  <div class="card-body mt-2">
+                                                       <p  class="card-text text-secondary lead font-weight-bold"> Hesap Tipi: #{person.ACCOUNT_TYPE}</p>
+                                                  </div>
+                                                  <div class="card-body mt-2" style="background-color: #111;">
+                                                       <p  class="card-text text-secondary lead font-weight-bold">Bakiye: #{person.ACCOUNT_BALANCE}</p>
+                                                  </div>
+                                             </div>
+
+                                        </h:form>
+
+
+                                   </h:column>
+                              </div>
+                         </div>
+                    </h:dataTable>   
+
+               </div>
+
+
+          </div>
+
+     </h:body>
 
 
 </html>

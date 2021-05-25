@@ -8,6 +8,15 @@ public class Person {
 
      private String id;
      private String username;
+     private String email;
+     private String password;
+     private String phonenumber;
+     private String gender;
+     private Account account;
+     private Card card;
+     private Bill bill;
+     public static Person PersonInstance;
+     public static Person UserInstance;
 
      public Person(String id, String username, String email, String phonenumber, String gender) {
           this.id = id;
@@ -16,14 +25,6 @@ public class Person {
           this.phonenumber = phonenumber;
           this.gender = gender;
      }
-     private String email;
-     private String password;
-     private String phonenumber;
-     private String gender;
-     private Account account;
-     private Card card;
-     public static Person PersonInstance;
-     public static Person UserInstance;
 
      public String getPhonenumber() {
           return phonenumber;
@@ -97,12 +98,13 @@ public class Person {
 
      }
 
-     public Person(String id, String username, String email, Account account, Card card) {
+     public Person(String id, String username, String email, Account account, Card card,Bill bill) {
           this.id = id;
           this.username = username;
           this.email = email;
           this.card = card;
           this.account = account;
+          this.bill=bill;
      }
 
      public String getId() {
