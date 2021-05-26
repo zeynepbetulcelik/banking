@@ -144,7 +144,24 @@ public class DetailDb {
          
      return flag;
      } 
+     public ResultSet getUserInfo() throws SQLException{
+      Connection con = Db.getInstance().getConnection();
+     String sql="SELECT * FROM USERS WHERE ID='"+Person.PersonInstance.getId()+"'";
+      PreparedStatement object1 = con.prepareStatement(sql);
+          CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
+          resultSet1.populate(object1.executeQuery());
+          return resultSet1;
      
+     
+     }
+     public ResultSet getaccountandusers() throws SQLException{
+          Connection con = Db.getInstance().getConnection();
+     String sql="SELECT * FROM ACCOUNTS INNER JOIN USERS ON ACCOUNTS.ACCOUNT_USER_ID=USERS.ID WHERE ID='"+Person.PersonInstance.getId()+"'";
+      PreparedStatement object1 = con.prepareStatement(sql);
+          CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
+          resultSet1.populate(object1.executeQuery());
+          return resultSet1;
+     }
    
 
      }
