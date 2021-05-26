@@ -19,7 +19,7 @@ public class DetailDb {
      public ResultSet getAccounts() throws SQLException {
           Connection con = Db.getInstance().getConnection();
           PreparedStatement object1 = con.prepareStatement(
-                  "select ACCOUNTS.ACCOUNT_NAME, ACCOUNTS.ACCOUNT_TYPE, ACCOUNTS.ACCOUNT_BALANCE  "
+                  "select *  "
                   + "from ACCOUNTS "
                   + "where ACCOUNTS.ACCOUNT_USER_ID='" + Person.PersonInstance.getId() + "'"
           );
@@ -111,11 +111,9 @@ public class DetailDb {
      
      public boolean payBill(String type, Double miktar) throws SQLException {
       Connection con = Db.getInstance().getConnection();
-      
-     
-     
+
       boolean flag = false;
-      
+
          try {
            Statement stmt=con.createStatement();
             String sql ="DELETE FROM BILLS WHERE BILLS.USER_ID = '"+Person.PersonInstance.getId()+"' and BILLS.TYPE = '"+ type+"'AND BILLS.QUANTITY="+miktar+"";
@@ -125,11 +123,31 @@ public class DetailDb {
              flag=false;
               ex.printStackTrace();
          }
-        
-          
+         
      return flag;
      } 
-    /* public void updatetotalbalance(){
+     
+     public boolean deleteAccount(String account_id) throws SQLException {
+      Connection con = Db.getInstance().getConnection();
+
+      boolean flag = false;
+
+         try {
+           Statement stmt=con.createStatement();
+            String sql ="DELETE FROM ACCOUNTS WHERE ACCOUNTS.ACCOUNT_ID = '"+account_id+"' ";
+            stmt.executeUpdate(sql);
+                 flag = true;
+         } catch (SQLException ex) {
+             flag=false;
+              ex.printStackTrace();
+         }
+         
+     return flag;
+     } 
+     
+   
+
      }
-*/
-}
+
+
+

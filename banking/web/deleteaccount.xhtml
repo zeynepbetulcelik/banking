@@ -7,7 +7,8 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
     <h:head>
        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
@@ -53,6 +54,24 @@ and open the template in the editor.
  justify-content: center;
   
 }
+.ode{
+                    background-color: #111; 
+                    border: none;
+                    color: white;
+                    padding: 10px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    transition-duration: 0.4s;
+                    cursor: pointer; 
+               }
+               
+               .ode:hover{
+                    background-color: #555555;
+                    color: white;    
+               }
 
 
 .main {
@@ -67,139 +86,62 @@ and open the template in the editor.
 }
 </style>
 </h:head>
-<body>
-
-<div class="sidenav">
-    <h3>Menü</h3>
-  <div id="accordion" style="margin-left:6px; margin-right:6px;" >
-      
-  <div class="card">
-    <div class="card-header" id="headingOne">
-      <h5 class="mb-0">
-        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Hesaplarım
-        </button>
-      </h5>
-    </div>
-
-    <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-            <a href="/banking/faces/newaccount.xhtml" role="button" aria-pressed="true">Yeni Hesap</a>
-           <a href="/banking/faces/deleteaccount.xhtml" role="button" aria-pressed="true">Hesap Silme</a>
-              <a href="/banking/faces/showbalance.xhtml" role="button" aria-pressed="true">Görüntüle</a>
-      </div>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-header" id="headingTwo">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Para Transferleri
-        </button>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-            <a href="/banking/faces/insidetransfer.xhtml" role="button" aria-pressed="true">Hesaplarım Arası</a>
-             <a href="/banking/faces/outsidetransfer.xhtml" role="button" aria-pressed="true">Başka Hesaba</a>
-             <a href="/banking/faces/transactionHistory.xhtml" role="button" aria-pressed="true">İşlem Geçmişi</a>
-             <a href="/banking/faces/registeredAccounts.xhtml" role="button" aria-pressed="true">Kayıtlı Alıcılar</a>
-          
-      </div>
-    </div>
-  </div>
-      <div class="card">
-    <div class="card-header" id="headingThree">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            Kartlarım
-        </button>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-             <a href="/banking/faces/creditCard.xhtml" role="button" aria-pressed="true">Kredi Kartlarım</a>
-             <a href="/banking/faces/debitCard.xhtml" role="button" aria-pressed="true">Banka Kartlarım</a>
-             <a href="/banking/faces/virtualCard.xhtml" role="button" aria-pressed="true">Sanal Kartlarım</a>
-      </div>
-    </div>
-  </div>
-      <div class="card">
-    <div class="card-header" id="headingFour">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-          Ödemeler
-        </button>
-      </h5>
-    </div>
-    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
-      <div class="card-body">
-             <a href="/banking/faces/payBills.xhtml" role="button" aria-pressed="true">Fatura Ödeme</a>
-       
-      </div>
-    </div>
-  </div>
-      
-  <div class="card">
-    <div class="card-header" id="headingFive">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-          Döviz
-        </button>
-      </h5>
-    </div>
-    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
-      <div class="card-body">
-         <a href="/banking/faces/currencyBanking.xhtml" role="button" aria-pressed="true">Döviz İşlemleri</a>
-             <a href="/banking/faces/goldBanking.xhtml" role="button" aria-pressed="true">Altın İşlemleri</a>
-           
-      </div>
-    </div>
-  </div>
-      <div class="card">
-    <div class="card-header" id="headingSix">
-      <h5 class="mb-0">
-        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-          Başvurular
-        </button>
-      </h5>
-    </div>
-    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
-      <div class="card-body">
-            <a href="/banking/faces/creditApplication.xhtml" role="button" aria-pressed="true">Kredi Başvurusu</a>
-             <a href="/banking/faces/creditCardApplications.xhtml" role="button" aria-pressed="true">Kredi Kartı Başvurusu</a>
-             <a href="/banking/faces/creditCardLimitApplications.xhtml" role="button" aria-pressed="true">K.K. Limit Başvurusu</a>
-      </div>
-    </div>
-  </div>
-</div>
+<h:body>
     
-</div>
+    <ui:insert name = "sidenav" >
 
-<div class="main">
-  <h2>Sidebar</h2>
-  <p>This sidebar is of full height (100%) and always shown.</p>
-  
-</div>
-    <h:panelGrid id = "panel" columns = "2" border = "1"
-      cellpadding = "10" cellspacing = 2>
+               <ui:include src = "/templates/sidebar.xhtml" />
+
+          </ui:insert> 
+
+          <div class="main">
+               <ui:insert name ="navbar">
+                    <ui:include src = "/templates/navbar.xhtml" />
+               </ui:insert> 
+              <div class="container">
+
+                    <h2 style="padding-left:480px">Hesaplarınız</h2>
+                    <h:dataTable value="#{detail.getAccounts()}" var="person"> 
+                         <div class="row ">
+                              <div class="col-4" >
+
+                                   <h:column>
+
+                                        <h:form class="form-group">
+
+                                             <div class="card mt-5 w-100" style="background-color: #111; overflow: auto; width: max-content;">
+                                                  <div class="card-body mt-2">
+                                                       <p class="card-text text-secondary lead font-weight-bold ">Hesap ismi: #{person.ACCOUNT_NAME}  </p>
+                                                  </div>
+                                                  <div class="card-body mt-2">
+                                                       <p  class="card-text text-secondary lead font-weight-bold"> Hesap Tipi: #{person.ACCOUNT_TYPE}</p>
+                                                  </div>
+                                                  <div class="card-body mt-2" style="background-color: #111;">
+                                                       <p  class="card-text text-secondary lead font-weight-bold">Bakiye: #{person.ACCOUNT_BALANCE}</p>
+                                                  </div>
+                                                 <div class="card-body mt-2" style="background-color: #111;">
+                                                        <h:form>
+                                                            <h:commandButton class="ode" value="Sil" action="#{personcontroller.deleteAccount(person.ACCOUNT_ID)}"
+                                                                                  
+                                                                                  ></h:commandButton>
+
+                                                            </h:form>
+                                                  </div>
+                                                 
+                                             </div>
+
+                                        </h:form>
+
+
+                                   </h:column>
+                              </div>
+                         </div>
+                    </h:dataTable>   
+
+               </div>
    
-   <f:facet name = "header">
-      <h:outputText value = "Login"/>
-   </f:facet>
-   <h:outputLabel value = "Username" />
-   <h:inputText  />
-   <h:outputLabel value = "Password" />
-   <h:inputSecret />
-   
-   <f:facet name = "footer">
-      <h:panelGroup style = "display:block; text-align:center">
-         <h:commandButton id = "submit" value = "Submit" />
-      </h:panelGroup>
-   </f:facet>
-</h:panelGrid>
-   
-</body>
+              </div>
+</h:body>
 
 
 </html>

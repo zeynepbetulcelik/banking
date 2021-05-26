@@ -103,5 +103,16 @@ public class Personcontroller {
                 return "payBills";
             }
         }
+        
+        public String deleteAccount(String account_id) throws SQLException {
+            boolean valid2 = detaildb.deleteAccount(account_id);
+            
+            if(valid2){
+                return "deleteaccount";
+            }
+            else{
+                return "deleteaccount";
+            }
+        }
             
         }
