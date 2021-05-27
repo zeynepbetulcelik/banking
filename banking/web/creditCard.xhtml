@@ -66,7 +66,7 @@ and open the template in the editor.
 
             .main {
                 margin-left: 250px; /* Same as the width of the sidenav */
-                font-size: 28px; /* Increased text to enable scrolling */
+                font-size: 20px; /* Increased text to enable scrolling */
                 padding: 0px 10px;
             }
 
@@ -74,6 +74,20 @@ and open the template in the editor.
                 .sidenav {padding-top: 15px;}
                 .sidenav a {font-size: 18px;}
             }
+              .payment-card {
+                    background: #ffffff;
+                    padding: 20px;
+                    margin-bottom: 25px;
+                    border: 1px solid #e7eaec;
+               }
+               .payment-icon-big {
+                    font-size: 60px;
+                    color: #d1dade;
+               }
+               .container{
+                padding: 100px;
+                
+               }
         </style>
     </h:head>
     <h:body>
@@ -91,31 +105,34 @@ and open the template in the editor.
             <div class="container">
                
                     
-                <h:dataTable value="#{detail.creditCards}" var="card"> 
-                        <div class="row">
-                        <div class="col-4">
-                            <h:column>
-
-                                <h:form class="form-group">
-
-                                    <div class="card mt-5 w-100" style="background-color: #111; overflow: auto; width: max-content;">
-                                        <div class="card-header">
-                                             <h3  class="card-text text-secondary lead font-weight-bold pl-5">#{card.USER_ID}  </h3>
+                 <h:dataTable value="#{detail.creditCards}" var="card"> 
+                        
+                                   <h:column> <div class="row">
+                              <div class="col-12">
+                                        <div class="payment-card">
+                                             <img alt="W3C Logo" src="https://www.paranfil.com/wp-content/uploads/2018/09/visa.png" width="70px" height="50px"> </img>      
+                                             <h2>
+                                                  #{card.CARD_ID}
+                                             </h2>
+                                             <div class="row">
+                                                  <div class="col-sm-6">
+                                                       <small>
+                                                            <strong>Expiry date:</strong> #{card.DATE}
+                                                       </small>
+                                                  </div>
+                                                  <div class="col-sm-6 text-right">
+                                                       <small>
+                                                            <strong>Name:</strong>#{card.USERNAME}
+                                                       </small>
+                                                  </div>
+                                             </div>
                                         </div>
-                                        <div class="card-body mt-2">
-                                            <p  class="card-text text-secondary lead font-weight-bold">#{card.CARD_ID}</p>
-                                        </div>
-                                        <div class="card-footer" style="background-color: #111;">
-                                            <p  class="card-text text-secondary lead font-weight-bold">#{card.LIMIT}</p>
-                                        </div>
-                                    </div>
-
-                                </h:form>
 
 
-                            </h:column>
-                        </div> 
-                        </div>
+    </div> 
+                         </div>
+                                   </h:column>
+                          
                     </h:dataTable>
                 </div>
             

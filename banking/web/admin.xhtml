@@ -22,7 +22,9 @@ and open the template in the editor.
           <link rel="stylesheet" type="text/css" href="/templates/sidebar.css"></link>
           <style>
                body {
-                    font-family: "Lato", sans-serif;
+                   
+    font-family: 'Roboto', sans-serif
+                    
                }
 
                .sidenav {
@@ -57,14 +59,7 @@ and open the template in the editor.
 
                }
 
-               .carousel-control-prev{
-                    width: 100px;  
-                    background-color:#ffffff;
-
-               }
-               .carousel-control-next{
-                    width: 100px;
-               }
+              
                .main {
                     margin-left: 250px; /* Same as the width of the sidenav */
                     font-size: 28px; /* Increased text to enable scrolling */
@@ -75,24 +70,18 @@ and open the template in the editor.
                     .sidenav {padding-top: 15px;}
                     .sidenav a {font-size: 18px;}
                }
-               .circle {
-                    border: 10px solid #73AD21;
-                    margin: auto;
-                    border-radius: 50%;
-                    height: 400px;
-                    width: 400px;
-                    background-color:#AA28E6;
-               }
+               .payment-card {
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border: 1px solid #e7eaec;
+}
+.payment-icon-big {
+  font-size: 60px;
+  color: #d1dade;
+}
 
-               .center{
 
-                    margin: auto;
-                    width: 100%;
-                    padding: 200px;   
-               }
-               .btn-block{
-                    width: 500px;
-               }
           </style>
      </h:head>
      <h:body>
@@ -103,24 +92,28 @@ and open the template in the editor.
 
           </ui:insert> 
 
+          
           <div class="main">
-               <div class="center">
-                    <div class="container" style = "padding: 100px;">
-                         <div class="row">
-                              <h:dataTable value="#{detail.getaccountandusers()}" var="accountanduser"> 
-                                   <h:column>
-                                        
-                                        <button class="btn btn-dark btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                             Ödenmemiş Faturaları Görüntüle
-                                        </button>
-
-                                   </h:column>  
-                              </h:dataTable> 
-
-                         </div>
+                      <div class="payment-card">
+                         
+                <h2>
+                    **** **** **** 1060
+                </h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <small>
+                            <strong>Expiry date:</strong> 10/16
+                        </small>
                     </div>
-               </div>
-          </div>
+                    <div class="col-sm-6 text-right">
+                        <small>
+                            <strong>Name:</strong> David
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
      </h:body>
 
