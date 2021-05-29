@@ -68,6 +68,7 @@ public class Personcontroller {
      public String Login() throws ClassNotFoundException, SQLException {
           person.PersonInstance = persondb.login(this.person);
           if (person.PersonInstance.getId() != null) {
+               detaildb.updatetotalbalance();
                return "admin";
           } else {
                return "index";

@@ -29,29 +29,27 @@ public class DetailDb {
 
      }
 
-
-     
      public ResultSet getCreditCards() throws SQLException {
           Connection con = Db.getInstance().getConnection();
-          String sql= "select *  from CREDIT_CARDS INNER JOIN USERS ON USERS.ID = CREDIT_CARDS.USER_ID where CREDIT_CARDS.USER_ID = '" + Person.PersonInstance.getId() + "'";
+          String sql = "select *  from CREDIT_CARDS INNER JOIN USERS ON USERS.ID = CREDIT_CARDS.USER_ID where CREDIT_CARDS.USER_ID = '" + Person.PersonInstance.getId() + "'";
           PreparedStatement object1 = con.prepareStatement(sql);
           CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
           resultSet1.populate(object1.executeQuery());
           return resultSet1;
 
      }
-     
+
      public ResultSet getDebitCards() throws SQLException {
           Connection con = Db.getInstance().getConnection();
-          String sql= "select *  from DEBIT_CARDS INNER JOIN USERS ON USERS.ID = DEBIT_CARDS.USER_ID where DEBIT_CARDS.USER_ID = '" + Person.PersonInstance.getId() + "'";
+          String sql = "select *  from DEBIT_CARDS INNER JOIN USERS ON USERS.ID = DEBIT_CARDS.USER_ID where DEBIT_CARDS.USER_ID = '" + Person.PersonInstance.getId() + "'";
           PreparedStatement object1 = con.prepareStatement(sql);
           CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
           resultSet1.populate(object1.executeQuery());
           return resultSet1;
 
      }
-     
-     public boolean registAccount(String account_name, String account_type, String id) {
+
+     public boolean registAccount(String account_name, String account_type) {
           Connection con = Db.getInstance().getConnection();
           boolean status = false;
           int count = 0;
@@ -62,7 +60,7 @@ public class DetailDb {
           try {
                PreparedStatement ps = con.prepareStatement(sql);
                ps.setString(1, util.generateUUID());
-               ps.setString(2, id);
+               ps.setString(2, Person.PersonInstance.getId());
                ps.setString(3, account_type);
                ps.setDouble(4, 0);
                ps.setString(5, account_name);
@@ -80,91 +78,119 @@ public class DetailDb {
 
      public ResultSet getbill() throws SQLException {
           Connection con = Db.getInstance().getConnection();
-          String sql= "select BILLS.TYPE, BILLS.QUANTITY  from BILLS where BILLS.USER_ID = '" + Person.PersonInstance.getId() + "'";
+          String sql = "select BILLS.TYPE, BILLS.QUANTITY  from BILLS where BILLS.USER_ID = '" + Person.PersonInstance.getId() + "'";
           PreparedStatement object1 = con.prepareStatement(sql);
           CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
           resultSet1.populate(object1.executeQuery());
           return resultSet1;
 
      }
-     public ResultSet getBillAmountByID(String type) throws SQLException{
-           Connection con = Db.getInstance().getConnection();
-           double sum=10;
-          String sql="SELECT SUM(QUANTITY) as SUMQUANTITY FROM BILLS WHERE USER_ID = '"+Person.PersonInstance.getId()+"' and TYPE = '"+ type+"'";
-           PreparedStatement object1 = con.prepareStatement(sql);
+
+     public ResultSet getBillAmountByID(String type) throws SQLException {
+          Connection con = Db.getInstance().getConnection();
+          double sum = 10;
+          String sql = "SELECT SUM(QUANTITY) as SUMQUANTITY FROM BILLS WHERE USER_ID = '" + Person.PersonInstance.getId() + "' and TYPE = '" + type + "'";
+          PreparedStatement object1 = con.prepareStatement(sql);
           CachedRowSet resultSet = new com.sun.rowset.CachedRowSetImpl();
           resultSet.populate(object1.executeQuery());
-          
-           
-                    return resultSet;
-          
+
+          return resultSet;
+
      }
-     public ResultSet billandbalance(String type) throws SQLException{
-      Connection con = Db.getInstance().getConnection();
-      
-      String sql ="SELECT * FROM BILLS INNER JOIN  USERS ON USERS.ID=BILLS.USER_ID WHERE USER_ID = '"+Person.PersonInstance.getId()+"' and TYPE = '"+ type+"'";
-      PreparedStatement object1 = con.prepareStatement(sql);
+
+     public ResultSet billandbalance(String type) throws SQLException {
+          Connection con = Db.getInstance().getConnection();
+
+          String sql = "SELECT * FROM BILLS INNER JOIN  USERS ON USERS.ID=BILLS.USER_ID WHERE USER_ID = '" + Person.PersonInstance.getId() + "' and TYPE = '" + type + "'";
+          PreparedStatement object1 = con.prepareStatement(sql);
           CachedRowSet rs = new com.sun.rowset.CachedRowSetImpl();
           rs.populate(object1.executeQuery());
-     return rs;
-     }    
-     
+          return rs;
+     }
+
      public boolean payBill(String type, Double miktar) throws SQLException {
-      Connection con = Db.getInstance().getConnection();
-
-      boolean flag = false;
-
-         try {
-           Statement stmt=con.createStatement();
-            String sql ="DELETE FROM BILLS WHERE BILLS.USER_ID = '"+Person.PersonInstance.getId()+"' and BILLS.TYPE = '"+ type+"'AND BILLS.QUANTITY="+miktar+"";
-            stmt.executeUpdate(sql);
-                 flag = true;
-         } catch (SQLException ex) {
-             flag=false;
-              ex.printStackTrace();
-         }
-         
-     return flag;
-     } 
-     
-     public boolean deleteAccount(String account_id) throws SQLException {
-      Connection con = Db.getInstance().getConnection();
-
-      boolean flag = false;
-
-         try {
-           Statement stmt=con.createStatement();
-            String sql ="DELETE FROM ACCOUNTS WHERE ACCOUNTS.ACCOUNT_ID = '"+account_id+"' ";
-            stmt.executeUpdate(sql);
-                 flag = true;
-         } catch (SQLException ex) {
-             flag=false;
-              ex.printStackTrace();
-         }
-         
-     return flag;
-     } 
-     public ResultSet getUserInfo() throws SQLException{
-      Connection con = Db.getInstance().getConnection();
-     String sql="SELECT * FROM USERS WHERE ID='"+Person.PersonInstance.getId()+"'";
-      PreparedStatement object1 = con.prepareStatement(sql);
-          CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
-          resultSet1.populate(object1.executeQuery());
-          return resultSet1;
-     
-     
-     }
-     public ResultSet getaccountandusers() throws SQLException{
           Connection con = Db.getInstance().getConnection();
-     String sql="SELECT * FROM ACCOUNTS INNER JOIN USERS ON ACCOUNTS.ACCOUNT_USER_ID=USERS.ID WHERE ID='"+Person.PersonInstance.getId()+"'";
-      PreparedStatement object1 = con.prepareStatement(sql);
+
+          boolean flag = false;
+
+          try {
+               Statement stmt = con.createStatement();
+               String sql = "DELETE FROM BILLS WHERE BILLS.USER_ID = '" + Person.PersonInstance.getId() + "' and BILLS.TYPE = '" + type + "'AND BILLS.QUANTITY=" + miktar + "";
+               stmt.executeUpdate(sql);
+               flag = true;
+          } catch (SQLException ex) {
+               flag = false;
+               ex.printStackTrace();
+          }
+
+          return flag;
+     }
+
+     public boolean deleteAccount(String account_id) throws SQLException {
+          Connection con = Db.getInstance().getConnection();
+
+          boolean flag = false;
+
+          try {
+               Statement stmt = con.createStatement();
+               String sql = "DELETE FROM ACCOUNTS WHERE ACCOUNTS.ACCOUNT_ID = '" + account_id + "' ";
+               stmt.executeUpdate(sql);
+               flag = true;
+          } catch (SQLException ex) {
+               flag = false;
+               ex.printStackTrace();
+          }
+
+          return flag;
+     }
+
+     public ResultSet getUserInfo() throws SQLException {
+          Connection con = Db.getInstance().getConnection();
+          String sql = "SELECT * FROM USERS WHERE ID='" + Person.PersonInstance.getId() + "'";
+          PreparedStatement object1 = con.prepareStatement(sql);
+          CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
+          resultSet1.populate(object1.executeQuery());
+          return resultSet1;
+
+     }
+
+     public ResultSet getaccountandusers() throws SQLException {
+          Connection con = Db.getInstance().getConnection();
+          String sql = "SELECT * FROM ACCOUNTS INNER JOIN USERS ON ACCOUNTS.ACCOUNT_USER_ID=USERS.ID WHERE ID='" + Person.PersonInstance.getId() + "'";
+          PreparedStatement object1 = con.prepareStatement(sql);
           CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
           resultSet1.populate(object1.executeQuery());
           return resultSet1;
      }
-   
+
+     public double calculator() throws SQLException {
+          Connection con = Db.getInstance().getConnection();
+
+          double balanceson = 0;
+
+          Statement st = con.createStatement();
+          ResultSet rs = st.executeQuery("SELECT ACCOUNT_BALANCE FROM ACCOUNTS WHERE ACCOUNTS.ACCOUNT_USER_ID = '" + Person.PersonInstance.getId() + "'");
+
+          while (rs.next()) {
+               balanceson += rs.getDouble("ACCOUNT_BALANCE");
+
+          }
+
+          return balanceson;
 
      }
+     
+     
+     public void updatetotalbalance() throws SQLException{
+     double balance=calculator();
+       Connection con = Db.getInstance().getConnection();
+       Statement stmt=con.createStatement();
+     
+       String sql="UPDATE USERS SET TOTALBALANCE ="+balance+"  WHERE ID='"+Person.PersonInstance.getId()+"'";
+       stmt.executeUpdate(sql);
+        
 
-
-
+     }
+     
+     
+}

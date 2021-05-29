@@ -98,11 +98,7 @@ and open the template in the editor.
                <ui:include src = "/templates/sidebar.xhtml" />
 
           </ui:insert> 
-           <ui:insert name = "w3-sidebar w3-bar-block w3-card" >
-
-               <ui:include src = "/templates/leftbar.xhtml" />
-
-          </ui:insert>
+        
          
           <div class="main">
 
@@ -144,7 +140,11 @@ and open the template in the editor.
 
                </div>
 
+<ui:insert name = "footer" >
 
+               <ui:include src = "/templates/footer.xhtml" />
+
+          </ui:insert>
           </div>
 
 

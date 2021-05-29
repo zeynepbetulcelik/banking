@@ -48,8 +48,8 @@ public class Accountscontroller {
           this.detaildb = detaildb;
      }
 
-     public String createAccount(String id) {
-          detaildb.registAccount(account.getAccount_name(), account.getAccount_type(), id);
+     public String createAccount(String accounttype) {
+          detaildb.registAccount(account.getAccount_name(), accounttype);
 
           return "newaccount";
      }

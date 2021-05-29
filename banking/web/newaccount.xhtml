@@ -8,225 +8,220 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    
-    <h:head>
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+
+     <h:head>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
           <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
-       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <script>
-</script>
- <style>
-  body {
-  font-family: "Lato", sans-serif;
-}
+          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <script>
+          </script>
+          <style>
+               body {
+                    font-family: "Lato", sans-serif;
+               }
 
-.sidenav {
-    
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
-  
-}
+               .sidenav {
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
+                    height: 100%;
+                    width: 250px;
+                    position: fixed;
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                    background-color: #111;
+                    overflow-x: hidden;
+                    padding-top: 20px;
 
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-.sidenav h3{
-    color: #ffffff;
- display:flex;
- justify-content: center;
-  
-}
+               }
+
+               .sidenav a {
+                    padding: 6px 8px 6px 16px;
+                    text-decoration: none;
+                    font-size: 25px;
+                    color: #818181;
+                    display: block;
+               }
+
+               .sidenav a:hover {
+                    color: #f1f1f1;
+               }
+               .sidenav h3{
+                    color: #ffffff;
+                    display:flex;
+                    justify-content: center;
+
+               }
 
 
-.main {
-  margin-left: 250px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
+               .main {
+                    margin-left: 250px; /* Same as the width of the sidenav */
+                    font-size: 28px; /* Increased text to enable scrolling */
+                    padding: 0px 10px;
+               }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-* {
-  outline: 0;
-  font-family: sans-serif
-}
-body {
-  background-color: #fafafa
-}
-span.msg,
-span.choose {
-  color: #555;
-  padding: 5px 0 10px;
-  display: inherit
-}
-.container {
-  width: 500px;
-  
-}
+               @media screen and (max-height: 450px) {
+                    .sidenav {padding-top: 15px;}
+                    .sidenav a {font-size: 18px;}
+               }
+               * {
+                    outline: 0;
+                    font-family: sans-serif
+               }
+               body {
+                    background-color: #fafafa
+               }
+               span.msg,
+               span.choose {
+                    color: #555;
+                    padding: 5px 0 10px;
+                    display: inherit
+               }
+               .container {
+                    width: 500px;
 
-/*Styling Selectbox*/
-.dropdown {
-  width: 300px;
-  display: inline-block;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 0 2px rgb(204, 204, 204);
-  transition: all .5s ease;
-  position: relative;
-  font-size: 14px;
-  color: #474747;
-  height: 100%;
-  text-align: left
-}
-.dropdown .select {
-    cursor: pointer;
-    display: block;
-    padding: 10px
-}
-.dropdown .select > i {
-    font-size: 13px;
-    color: #888;
-    cursor: pointer;
-    transition: all .3s ease-in-out;
-    float: right;
-    line-height: 20px
-}
-.dropdown:hover {
-    box-shadow: 0 0 4px rgb(204, 204, 204)
-}
-.dropdown:active {
-    background-color: #f8f8f8
-}
-.dropdown.active:hover,
-.dropdown.active {
-    box-shadow: 0 0 4px rgb(204, 204, 204);
-    border-radius: 2px 2px 0 0;
-    background-color: #f8f8f8
-}
-.dropdown.active .select > i {
-    transform: rotate(-90deg)
-}
-.dropdown .dropdown-menu {
-    position: absolute;
-    background-color: #fff;
-    width: 100%;
-    left: 0;
-    margin-top: 1px;
-    box-shadow: 0 1px 2px rgb(204, 204, 204);
-    border-radius: 0 1px 2px 2px;
-    overflow: hidden;
-    display: none;
-    max-height: 144px;
-    overflow-y: auto;
-    z-index: 9
-}
-.dropdown .dropdown-menu li {
-    padding: 10px;
-    transition: all .2s ease-in-out;
-    cursor: pointer
-} 
-.dropdown .dropdown-menu {
-    padding: 0;
-    list-style: none
-}
-.dropdown .dropdown-menu li:hover {
-    background-color: #f2f2f2
-}
-.dropdown .dropdown-menu li:active {
-    background-color: #e2e2e2
-}
-</style>
-</h:head>
-<h:body>
- 
+               }
+
+            
+               .confirm{
+                    background-color: #111; 
+                    border: none;
+                    color: white;
+                    padding: 10px 16px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    transition-duration: 0.4s;
+                    cursor: pointer; 
+                      justify-content: center
+                                  }
+               .confirm:hover{
+                    background-color: #555555;
+                    color: white;    
+               }
+               .un:focus, .pass:focus {
+        border: 2px solid rgba(0, 0, 0, 0.18) !important;
+        
+    }
+     .un {
+          padding-left: 400px;
+    width: 76%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    margin-left: 46px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+    }
+          </style>
+     </h:head>
+     <h:body>
+
           <ui:insert name = "sidenav" >
 
                <ui:include src = "/templates/sidebar.xhtml" />
 
           </ui:insert> 
-           <ui:insert name = "w3-sidebar w3-bar-block w3-card" >
 
-               <ui:include src = "/templates/leftbar.xhtml" />
 
-          </ui:insert>
-
-<div class="main">
-        <ui:insert name ="navbar">
+          <div class="main">
+               <ui:insert name ="navbar">
                     <ui:include src = "/templates/navbar.xhtml" />
                </ui:insert> 
-    
- <div class="container">
-     <h4 style="text-align: center; font-family: Calibri; font-size: 50px">OLUŞTURMAK İSTEDİĞİNİZ HESABIN ÖZELLİKLERİNİ GİRİNİZ</h4>
-     <h:form class="form2">
-     <br>Hesap ismini giriniz</br>
-            
-     <h:inputText  class ="un" id="account_name" value="#{accountscontroller.account.account_name}" ></h:inputText>
-     <label>Hesap Türünü giriniz</label>
-      <div class="dropdown">
-          
-        <div class="select">
-          <span>...</span>
-          <i class="fa fa-chevron-left"></i>
-        </div>
-          
-           <h:inputText  class ="un" id="account_type" value="#{accountscontroller.account.account_type}"></h:inputText>
-        <ul class="dropdown-menu">
-          <li id="dovizhesabi">Döviz Hesabı</li>
-          <li id="altinhesabi">Altın Hesabı</li>
-          <li id="vadesizhesap">Vadesiz Hesap</li>
-        </ul>
-          
-      </div>
-     <h:commandButton value="OK" action = "#{accountscontroller.createAccount(personcontroller.person.id)}"></h:commandButton>
-	</h:form>
-  
-  <span class="msg"></span>
-</div>
-</div>
-    <script type="text/javascript">/*Dropdown Menu*/
-$('.dropdown').click(function () {
-        $(this).attr('tabindex', 1).focus();
-        $(this).toggleClass('active');
-        $(this).find('.dropdown-menu').slideToggle(300);
-    });
-    $('.dropdown').focusout(function () {
-        $(this).removeClass('active');
-        $(this).find('.dropdown-menu').slideUp(300);
-    });
-    $('.dropdown .dropdown-menu li').click(function () {
-        $(this).parents('.dropdown').find('span').text($(this).text());
-        $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
-    });
-/*End Dropdown Menu*/
+               <div class="container" style = "padding: 100px;">
+                    <div class="row"><div class="col-6">
+                         
+                        
+                         <button class="btn btn-dark btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapseExample">
+                              ALTIN HESABI OLUŞTUR
+                         </button>
+                         <div class="collapse" id="collapse1" style="width:450px">
+                              <div class="card card-body">
+
+                                   <div class="input-group mb-3" style="justify-content:center">
 
 
-$('.dropdown-menu li').click(function () {
-  var input = '<strong>' + $(this).parents('.dropdown').find('input').val() + '</strong>',
-      msg = '<span class="msg">Hidden input value: ';
-  $('.msg').html(msg + input + '</span>');
-}); </script>
-</h:body>
+                                        <p> <h:form><h:inputText class ="un" id="miktar" value="#{accountscontroller.account.account_name}" ></h:inputText> 
+                                                  <div class="commandbutton" style="justify-content:center">
+                                                  <h:commandButton class="confirm" value="confirm" action="#{accountscontroller.createAccount('ALTIN')}"
+
+                                                                   ></h:commandButton></div>
+
+                                             </h:form>
+                                        </p> 
+
+                                   </div>
+                              </div>
+                         </div> </div>
+                         <div class="col-6">
+                         <button class="btn btn-dark btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapse2" aria-expanded="false" aria-controls="collapseExample">
+                              DÖVİZ HESABI OLUŞTUR
+                         </button>
+                          <div class="collapse" id="collapse2" style="width:450px">
+                              <div class="card card-body">
+
+                                   <div class="input-group mb-3">
+
+
+                                        <p> <h:form><h:inputText class ="un" id="miktar" value="#{accountscontroller.account.account_name}" ></h:inputText> 
+                                                  <h:commandButton class="confirm" value="confirm" action="#{accountscontroller.createAccount('DOVIZHESABI')}"
+
+                                                                   ></h:commandButton>
+
+                                             </h:form>
+                                        </p> 
+
+                                   </div>
+                              </div>
+                         </div></div>
+                           <div class="col-6">
+                         <button class="btn btn-dark btn-lg btn-block" type="button" data-toggle="collapse" data-target="#collapse3" aria-expanded="false" aria-controls="collapseExample">
+                              VADESİZ HESAP OLUŞTUR
+                         </button>
+                          <div class="collapse" id="collapse3" style="width:450px">
+                              <div class="card card-body">
+
+                                   <div class="input-group mb-3">
+
+
+                                        <p> <h:form><h:inputText class ="un" id="miktar" value="#{accountscontroller.account.account_name}" ></h:inputText> 
+                                                  <h:commandButton class="confirm" value="confirm" action="#{accountscontroller.createAccount('VADESIZHESAP')}"
+
+                                                                   ></h:commandButton>
+
+                                             </h:form>
+                                        </p> 
+
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+ </div>
+               </div>
+
+               <ui:insert name = "footer" >
+
+                    <ui:include src = "/templates/footer.xhtml" />
+
+               </ui:insert>
+          </div>
+
+     </h:body>
 
 
 </html>

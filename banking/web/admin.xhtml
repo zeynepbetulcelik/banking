@@ -20,12 +20,7 @@ and open the template in the editor.
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <link rel="stylesheet" type="text/css" href="/templates/sidebar.css"></link>
           <style>
-               body {
-
-                    font-family: 'Roboto', sans-serif
-
-               }
-
+              
                .sidenav {
 
                     height: 100%;
@@ -69,33 +64,70 @@ and open the template in the editor.
                     .sidenav {padding-top: 15px;}
                     .sidenav a {font-size: 18px;}
                }
+               .circle {
+                    width: 400px;
+                    height: 400px;
+                    line-height: 500px;
+                    border-radius: 50%;
+                    font-size: 40px;
+                    color: #fff;
+                    text-align: center;
+                    background: #000;
+                    padding-right:100px;
+                   padding-left: 100px;
 
-
-
+               }
+            
+               .circlecontainer{
+                    padding-left: 300px; 
+                      text-align: center;
+               }
+               .circle:hover{
+                    color: #ffffff; 
+               }
           </style>
-     </h:head>
-     <h:body>
 
+
+
+     </h:head>
+
+     <body>
           <ui:insert name = "sidenav" >
 
                <ui:include src = "/templates/sidebar.xhtml" />
 
           </ui:insert> 
 
-          <ui:insert name = "w3-sidebar w3-bar-block w3-card" >
 
-               <ui:include src = "/templates/leftbar.xhtml" />
-
-          </ui:insert>
           <div class="main">
-               <ui:insert name ="navbar">
+
+
+               <div id="top_links">
+<ui:insert name ="navbar">
                     <ui:include src = "/templates/navbar.xhtml" />
-               </ui:insert> 
+               </ui:insert>
+
+                    <div class="circlecontainer">
+
+                         <div class="circle" >
+                              <h:dataTable value="#{detail.userInfo}" var="user">
+                                   <h:column>
+                                        <h2 style="padding-top:40px">TOTAL BALANCE</h2> 
+                                        <p>#{user.TOTALBALANCE}</p>    
+                                          
+                                   </h:column> 
+                              </h:dataTable>    
+                         </div>
+                    </div>
+                <ui:insert name = "footer" >
+
+               <ui:include src = "/templates/footer.xhtml" />
+
+          </ui:insert> 
+                    
+
+               </div>
 
           </div>
-
-
-     </h:body>
-
-
+     </body>
 </html>

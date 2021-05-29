@@ -14,54 +14,210 @@ and open the template in the editor.
 
           <style type="text/css">
 
-               .buttons input {
-                    margin: 5px;
-                    padding: 5px 5px 5px 20px; /* 20px makes room for your background image */
-                    border: 1px solid #aaa;
+            body{
+                    margin:0;
+                    color:#232323;
+                    background:#ababab;
+               }
+               div, h1, h2, h3, h4, p, form, label, input, textarea, img, span{
+                    margin:0; padding:0;
                }
 
-               .buttons .apply {
-                    background: #eee url(path/to/apply.png) no-repeat 0 50%;
-               } 
+               ul{
+                    margin:0; 
+                    padding:0; 
+                    list-style-type:none;
+                    font-size:0;
+                    line-height:0;
+               }
+
+
+               .spacer{
+                    clear:both; 
+                    font-size:0; 
+                    line-height:0;
+               }
+               .more
+               {
+                    font:normal 11px/18px Arial, Helvetica, sans-serif;
+                    color:#00d09d;
+                    text-decoration:none;
+                    padding-left:230px;
+               }
+               .style1{color:#00d09d;}
+               /*------------------------------------------------body--------------------*/
+
+               div, h1, h2, h3, h4, p, form, label, input, textarea, img, span{
+                    margin:0; padding:0;
+               }
+
+               ul{
+                    margin:0; 
+                    padding:0; 
+                    list-style-type:none;
+                    font-size:0;
+                    line-height:0;
+               }
+
+
+               .spacer{
+                    clear:both; 
+                    font-size:0; 
+                    line-height:0;
+               }
+               .more
+               {
+                    font:normal 11px/18px Arial, Helvetica, sans-serif;
+                    color:#00d09d;
+                    text-decoration:none;
+                    padding-left:230px;
+               }
+               .style1{color:#00d09d;}
+               /*------------------------------------------------body--------------------*/
+
+               #top_links
+               {
+                    margin:0 auto;
+                    padding:0px;
+                    width:1000px;
+                    height:40px;
+               }
+               #top_linksin
+               {
+                    padding:10px 0 0 0;
+                    width:310px;
+                    height:18px;
+                    float:right;
+               }
+
+               #top_linksin ul
+               {
+                    list-style:none;
+                    margin:0 0 0 40px;
+               }
+               #top_linksin ul li
+               {
+                    font:normal 11px/10px Arial, Helvetica, sans-serif;
+                    color:#FFFFFF;
+                    border-right:#7f7f7f 1px solid;
+                    padding:0 15px;
+                    float:left;
+               }
+               #top_linksin ul li a
+               {
+                    text-decoration:none;
+                    display:block;
+                    color:#7f7f7f;
+               }
+               #top_linksin ul li a:hover
+               {
+                    text-decoration:none;
+                    display:block;
+                    color:#FFFFFF;
+               }
+
+               #header
+               {
+                    margin:0 auto;
+                    background:#000 url(images/globe_03.gif) 0 0 no-repeat;
+                    width:897px;
+                    height:282px;
+               }
+               #header h1
+               {
+                    font:bold 44px/18px Arial, Helvetica, sans-serif;
+                    color:#FFFFFF;
+                    padding:100px 0 0 380px;
+               }
+               #header h2
+               {
+                    font:bold italic 24px/18px Arial, Helvetica, sans-serif;
+                    color:#ababab;
+                    padding:20px 0 0 380px;
+               }
+
+               #navigation
+               {
+                    margin:0 auto;
+                    width:896px;
+                    height:40px;
+                    background:#000;
+                    border:1px solid #282828;
+               }
+               #navigation ul
+               {
+                    list-style:none;
+               }
+               #navigation ul li
+               {
+                    color:#adadad;
+                    float:left;
+                    text-align:center;
+                    font:bold 15px/40px Arial, Helvetica, sans-serif;
+                    width:127px;
+                    border-right:1px solid #282828;
+               }
+               #navigation ul li a
+               {
+                    text-decoration:none;
+                    display:block;
+                    color:#adadad;
+               }
+               #navigation ul li a:hover
+               {
+                    color:#FFFFFF;
+               }
+               #navigation ul li.last
+               {
+                    border:none;
+                    float:left;
+               }
+
+               #content1
+               {
+                    width:897px; 
+                    margin:0 auto; 
+                    background:url(images/globe_05.jpg) 0 0 repeat-y;
+               }
+               #content1 h1
+               {
+                    font:bold italic 22px/79px Arial, Helvetica, sans-serif;
+                    color:#ffffff;
+                    padding-left:30px;
+               }
+               #content1 p
+               {
+                    font:normal 12px/18px Arial, Helvetica, sans-serif;
+                    color:#b2b2b2;
+                    padding:5px 15px 0 15px;
+               }
+               .con
+               {
+                    background:url(images/globe_06.jpg) 0 0 repeat-y;
+                    width:290px;
+               }
+               
+
+             
 
           </style>
      </head>
      <h:body>
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         
+                    <div id="header">
+                         <h1>Online Banking System<span class="style1"></span></h1>
+                         <h1>For LILO Bank Co.Ltd<span class="style1"></span></h1>
+                         <h2>Extra Ordinary Service</h2>	
 
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-               </button>
+                    </div>
 
-               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                         <li class="nav-item active">
-                              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                         </li>
-                         <!--<li class="nav-item">
-                           <a class="nav-link" href="#">Link</a>
-                         </li>
-                         <li class="nav-item dropdown">
-                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                             Dropdown
-                           </a>
-                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                             <a class="dropdown-item" href="#">Action</a>
-                             <a class="dropdown-item" href="#">Another action</a>
-                             <div class="dropdown-divider"></div>
-                             <a class="dropdown-item" href="#">Something else here</a>
-                           </div>
-                         </li>
-                         <li class="nav-item">
-                           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                         </li>-->
-                    </ul>
-                    <div class="buttons">
-                         <h:form class = "form-inline my-2 my-lg-0">
-                              <h:commandButton class="exit" value="Logout" styleClass="apply" action="#{personcontroller.exit()}"
-                                               ></h:commandButton>
-                         </h:form>
-                    </div>    </div>
-          </nav>
+                    <div id="navigation">
+                         <ul>
+
+                              <li><a href="login.html">LOGOUT</a></li>
+
+                              <li><a href="about.jsp">ABOUT US</a></li>
+                         </ul>
+                    </div>
      </h:body>
 </html>
