@@ -120,26 +120,27 @@ and open the template in the editor.
                {
                     margin:0 auto;
                     background:#000 url(images/globe_03.gif) 0 0 no-repeat;
-                    width:897px;
-                    height:282px;
+                    width:100%;
+                    height:285px;
                }
                #header h1
                {
                     font:bold 44px/18px Arial, Helvetica, sans-serif;
                     color:#FFFFFF;
-                    padding:100px 0 0 380px;
+                    padding:100px 0 0 700px;
                }
                #header h2
                {
                     font:bold italic 24px/18px Arial, Helvetica, sans-serif;
                     color:#ababab;
-                    padding:20px 0 0 380px;
+                    padding:20px 0 0 700px;
+                    
                }
 
                #navigation
                {
                     margin:0 auto;
-                    width:896px;
+                    width:100%;
                     height:40px;
                     background:#000;
                     border:1px solid #282828;
@@ -219,6 +220,7 @@ and open the template in the editor.
      <h:body>
 
           <div id="header">
+              <img alt="Logo" src="https://i.hizliresim.com/sw3rlcp.png" width="527px" height="284px"> </img>
                <h1>Online Banking System<span class="style1"></span></h1>
                <h1>For LILO Bank Co.Ltd<span class="style1"></span></h1>
                <h2>Extra Ordinary Service</h2>	
@@ -231,7 +233,9 @@ and open the template in the editor.
                     <li>
                          <h:form > <h:commandButton class="logout" value="LOGOUT" action="#{personcontroller.exit()}" ></h:commandButton></h:form>
                     </li>
-
+                        <li>
+                            <h:form > <h:commandButton class="logout" value="HOME" action="#{personcontroller.Login()}" ></h:commandButton></h:form>
+                    </li>
                     <li><a href="about.jsp">ABOUT US</a></li>
                </ul>
           </div>

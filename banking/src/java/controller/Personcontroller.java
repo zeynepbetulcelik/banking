@@ -24,6 +24,15 @@ public class Personcontroller {
      private Person person;
      private DetailDb detaildb;
      private double miktar;
+     private String account_id;
+
+    public String getAccount_id() {
+        return account_id;
+    }
+
+    public void setAccount_id(String account_id) {
+        this.account_id = account_id;
+    }
 
     public double getMiktar() {
         return miktar;
@@ -38,6 +47,7 @@ public class Personcontroller {
           Person.PersonInstance = this.person;
           this.detaildb = new DetailDb();
           this.miktar = miktar;
+          this.account_id = account_id;
      }
 
     public DetailDb getDetaildb() {
@@ -96,13 +106,11 @@ public class Personcontroller {
        }
         
         public String payBill(String type) throws SQLException{
-           boolean valid1 = detaildb.payBill(type, miktar);
+           detaildb.payBill(type, miktar,account_id);
+           detaildb.updateBills(miktar);
            
-            if(valid1){
-               return "payBills";
-           } else{
+          
                 return "payBills";
-            }
         }
         
         public String deleteAccount(String account_id) throws SQLException {
