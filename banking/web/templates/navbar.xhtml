@@ -14,7 +14,7 @@ and open the template in the editor.
 
           <style type="text/css">
 
-            body{
+               body{
                     margin:0;
                     color:#232323;
                     background:#ababab;
@@ -196,28 +196,44 @@ and open the template in the editor.
                     background:url(images/globe_06.jpg) 0 0 repeat-y;
                     width:290px;
                }
-               
+               .logout{
+                       margin:0 auto;
+                    width:896px;
+                    height:40px;
+                    background:#000;
+                    border:1px solid #282828;
+                      list-style:none;
+                    background:#000;
+                    color:#adadad;
+                    float:left;
+                    text-align:center;
+                    font:bold 15px/40px Arial, Helvetica, sans-serif;
+                    width:127px;
+                    border-right:1px solid #282828;
+               }
 
-             
+
 
           </style>
      </head>
      <h:body>
-         
-                    <div id="header">
-                         <h1>Online Banking System<span class="style1"></span></h1>
-                         <h1>For LILO Bank Co.Ltd<span class="style1"></span></h1>
-                         <h2>Extra Ordinary Service</h2>	
 
-                    </div>
+          <div id="header">
+               <h1>Online Banking System<span class="style1"></span></h1>
+               <h1>For LILO Bank Co.Ltd<span class="style1"></span></h1>
+               <h2>Extra Ordinary Service</h2>	
 
-                    <div id="navigation">
-                         <ul>
+          </div>
 
-                              <li><a href="login.html">LOGOUT</a></li>
+          <div id="navigation">
+               <ul>
 
-                              <li><a href="about.jsp">ABOUT US</a></li>
-                         </ul>
-                    </div>
+                    <li>
+                         <h:form > <h:commandButton class="logout" value="LOGOUT" action="#{personcontroller.exit()}" ></h:commandButton></h:form>
+                    </li>
+
+                    <li><a href="about.jsp">ABOUT US</a></li>
+               </ul>
+          </div>
      </h:body>
 </html>
