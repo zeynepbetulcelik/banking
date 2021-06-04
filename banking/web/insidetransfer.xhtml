@@ -7,97 +7,116 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
     <h:head>
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
-          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
-       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
- <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <script>
-</script>
- <style>
-  body {
-  font-family: "Lato", sans-serif;
-}
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <style>
 
-.sidenav {
-    
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
-  
-}
+            body {
+                font-family: "Lato", sans-serif;
+            }
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
+            .sidenav {
 
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-.sidenav h3{
-    color: #ffffff;
- display:flex;
- justify-content: center;
-  
-}
+                height: 100%;
+                width: 250px;
+                position: fixed;
+                z-index: 1;
+                top: 0;
+                left: 0;
+                background-color: #111;
+                overflow-x: hidden;
+                padding-top: 20px;
+
+            }
+
+            .sidenav a {
+                padding: 6px 8px 6px 16px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #818181;
+                display: block;
+            }
+
+            .sidenav a:hover {
+                color: #f1f1f1;
+            }
+            .sidenav h3{
+                color: #ffffff;
+                display:flex;
+                justify-content: center;
+
+            }
 
 
-.main {
-  margin-left: 250px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
+            .main {
+                margin-left: 250px; /* Same as the width of the sidenav */
+                font-size: 28px; /* Increased text to enable scrolling */
+                padding: 0px 10px;
+            }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
-</h:head>
-<body>
-
-
+            @media screen and (max-height: 450px) {
+                .sidenav {padding-top: 15px;}
+                .sidenav a {font-size: 18px;}
+            }
+        </style>
+    </h:head>
+    <body>
         <ui:insert name = "sidenav" >
 
-               <ui:include src = "/templates/sidebar.xhtml" />
+            <ui:include src = "/templates/sidebar.xhtml" />
 
-          </ui:insert> 
-       
-
-          <div class="main">
-               <ui:insert name ="navbar">
-                    <ui:include src = "/templates/navbar.xhtml" />
-               </ui:insert> 
+        </ui:insert> 
 
 
-  <h2>Sidebar</h2>
-  <p>This sidebar is of full height (100%) and always shown.</p>
-  <p>Scroll down the page to see the result.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-<ui:insert name = "footer" >
+        <div class="main">       
+            <ui:insert name ="navbar">
+                <ui:include src = "/templates/navbar.xhtml" />
+            </ui:insert> 
 
-               <ui:include src = "/templates/footer.xhtml" />
+            <h:dataTable value="#{detail.getAccounts()}" var="accounts" style="position:fixed">
+                <h:column>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="#{accounts.ACCOUNT_ID}">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="##{accounts.ACCOUNT_NAME}" aria-expanded="false" aria-controls="#{accounts.ACCOUNT_NAME}">
+                                        #{accounts.ACCOUNT_NAME}
+                                    </button>
+                                </h5>
+                            </div>
 
-          </ui:insert></div>
-   
-</body>
+                            <div id="#{accounts.ACCOUNT_NAME}" class="collapse show" aria-labelledby="#{accounts.ACCOUNT_ID}" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    <li>Hesap Türü : #{accounts.ACCOUNT_TYPE}</li> 
+                                    <li>Hesap Bakiyesi :#{accounts.ACCOUNT_BALANCE} </li>
+                                    <li>Hesap Id : #{accounts.ACCOUNT_ID}</li>
+                                    <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
+                                        <h:inputText class ="un" id="gonderen" value="#{personcontroller.account_id}" ></h:inputText> 
+                                        <h:commandButton class="ode" value="öde" action="#{personcontroller.paraTransferEt(accounts.ACCOUNT_ID)}">
+
+                                                         </h:commandButton>
+
+                                    </h:form>
+
+                                </div>
+                            </div>
+                        </div> </div>
+                </h:column>
+            </h:dataTable>
+            <ui:insert name = "footer" >
+                <ui:include src = "/templates/footer.xhtml" />
+            </ui:insert>
+        </div>
+
+    </body>
 
 
 </html>

@@ -7,6 +7,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
      <h:head>
+         
+        
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
           <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -64,15 +66,24 @@
                .circle {
                     width: 400px;
                     height: 400px;
-                    line-height: 500px;
+                    border:solid;
+                    border-color: darkcyan;                   
                     border-radius: 50%;
                     font-size: 40px;
-                    color: #fff;
+                    color: cadetblue;
                     text-align: center;
                     background: #000;
                     padding-right:100px;
                    padding-left: 100px;
 
+               }
+               .insideCircle{
+                   position: absolute;
+            margin: auto;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
                }
             
                .circlecontainer{
@@ -107,13 +118,15 @@
                     <div class="circlecontainer">
 
                          <div class="circle" >
+                             <span class="insideCircle">
                               <h:dataTable value="#{detail.userInfo}" var="user">
                                    <h:column>
                                         <h2 style="padding-top:40px">TOTAL BALANCE</h2> 
-                                        <p>#{user.TOTALBALANCE}</p>    
+                                        <p id="countUp">#{user.TOTALBALANCE}</p>    
                                           
                                    </h:column> 
                               </h:dataTable>    
+                         </span>
                          </div>
                     </div>
                 <ui:insert name = "footer" >

@@ -1,5 +1,6 @@
 package model;
 
+import entity.Account;
 import entity.Person;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,6 +28,33 @@ public class DetailDb {
           resultSet1.populate(object1.executeQuery());
           return resultSet1;
 
+     }
+     public void transferBalance(String gonderen,String alan,double miktar) throws SQLException{
+         double firstaccountbalance = 0;
+           double result = 0;
+           Connection con = Db.getInstance().getConnection();
+           Statement st = con.createStatement();
+           String sql1="SELECT ACCOUNT_BALANCE FROM ACCOUNTS WHERE ACCOUNT_ID= '" + gonderen + "' ";
+           ResultSet rs = st.executeQuery(sql1);
+           while(rs.next()){
+           firstaccountbalance = rs.getDouble("ACCOUNT_BALANCE");
+           result = firstaccountbalance - miktar;
+           
+           }
+           Statement stm = con.createStatement();
+          String sql = "UPDATE ACCOUNTS SET ACCOUNT_BALANCE ="+result+" WHERE ACCOUNT_ID='"+gonderen+"'    ";
+          stm.executeUpdate(sql);
+          Statement st2 = con.createStatement();
+           String sql4="SELECT ACCOUNT_BALANCE FROM ACCOUNTS WHERE ACCOUNT_ID= '" + alan+ "' ";
+           ResultSet rs1 = st.executeQuery(sql4);
+           while(rs1.next()){
+           firstaccountbalance = rs1.getDouble("ACCOUNT_BALANCE");
+           result = firstaccountbalance +miktar;
+           
+           }
+           Statement stm6 = con.createStatement();
+          String sq15 = "UPDATE ACCOUNTS SET ACCOUNT_BALANCE ="+result+" WHERE ACCOUNT_ID='"+alan+"'    ";
+          stm.executeUpdate(sq15);
      }
 
      public ResultSet getCreditCards() throws SQLException {

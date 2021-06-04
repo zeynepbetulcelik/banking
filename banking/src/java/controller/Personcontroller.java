@@ -123,5 +123,9 @@ public class Personcontroller {
                 return "deleteaccount";
             }
         }
-            
+            public String paraTransferEt(String alan)throws SQLException{
+                
+                detaildb.transferBalance(alan,account_id, miktar);
+                return "insidetransfer";
+            }
         }
