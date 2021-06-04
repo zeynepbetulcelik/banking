@@ -74,16 +74,21 @@ and open the template in the editor.
                     padding: 20px;
                     margin-bottom: 25px;
                     border: 1px solid #e7eaec;
+                   
                }
                .payment-icon-big {
                     font-size: 60px;
                     color: #d1dade;
                }
                .container{
-                padding: 100px;
+                    align-items: center;
+
+         
                 
                }
-            
+               .col-12{
+                         
+               }
           </style>
      </h:head>
      <h:body>
@@ -100,12 +105,12 @@ and open the template in the editor.
                     <ui:include src = "/templates/navbar.xhtml" />
                </ui:insert> 
                <div class="container">
-
+                    <div class="card-container" > 
 
                     <h:dataTable value="#{detail.debitCards}" var="card"> 
                         
-                                   <h:column> <div class="row">
-                              <div class="col-12">
+                              <h:column> 
+                                 
                                         <div class="payment-card">
                                              <img alt="W3C Logo" src="https://www.paranfil.com/wp-content/uploads/2018/09/visa.png" width="70px" height="50px"> </img>      
                                              <h2>
@@ -126,11 +131,10 @@ and open the template in the editor.
                                         </div>
 
 
-    </div> 
-                         </div>
+  
                                    </h:column>
                           
-                    </h:dataTable>
+                    </h:dataTable></div> 
                </div>
 <ui:insert name = "footer" >
 

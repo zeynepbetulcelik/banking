@@ -3,10 +3,12 @@ package model;
 import entity.Account;
 import entity.Person;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
@@ -29,31 +31,32 @@ public class DetailDb {
           return resultSet1;
 
      }
-     public void transferBalance(String gonderen,String alan,double miktar) throws SQLException{
-         double firstaccountbalance = 0;
-           double result = 0;
-           Connection con = Db.getInstance().getConnection();
-           Statement st = con.createStatement();
-           String sql1="SELECT ACCOUNT_BALANCE FROM ACCOUNTS WHERE ACCOUNT_ID= '" + gonderen + "' ";
-           ResultSet rs = st.executeQuery(sql1);
-           while(rs.next()){
-           firstaccountbalance = rs.getDouble("ACCOUNT_BALANCE");
-           result = firstaccountbalance - miktar;
-           
-           }
-           Statement stm = con.createStatement();
-          String sql = "UPDATE ACCOUNTS SET ACCOUNT_BALANCE ="+result+" WHERE ACCOUNT_ID='"+gonderen+"'    ";
+
+     public void transferBalance(String gonderen, String alan, double miktar) throws SQLException {
+          double firstaccountbalance = 0;
+          double result = 0;
+          Connection con = Db.getInstance().getConnection();
+          Statement st = con.createStatement();
+          String sql1 = "SELECT ACCOUNT_BALANCE FROM ACCOUNTS WHERE ACCOUNT_ID= '" + gonderen + "' ";
+          ResultSet rs = st.executeQuery(sql1);
+          while (rs.next()) {
+               firstaccountbalance = rs.getDouble("ACCOUNT_BALANCE");
+               result = firstaccountbalance - miktar;
+
+          }
+          Statement stm = con.createStatement();
+          String sql = "UPDATE ACCOUNTS SET ACCOUNT_BALANCE =" + result + " WHERE ACCOUNT_ID='" + gonderen + "'    ";
           stm.executeUpdate(sql);
           Statement st2 = con.createStatement();
-           String sql4="SELECT ACCOUNT_BALANCE FROM ACCOUNTS WHERE ACCOUNT_ID= '" + alan+ "' ";
-           ResultSet rs1 = st.executeQuery(sql4);
-           while(rs1.next()){
-           firstaccountbalance = rs1.getDouble("ACCOUNT_BALANCE");
-           result = firstaccountbalance +miktar;
-           
-           }
-           Statement stm6 = con.createStatement();
-          String sq15 = "UPDATE ACCOUNTS SET ACCOUNT_BALANCE ="+result+" WHERE ACCOUNT_ID='"+alan+"'    ";
+          String sql4 = "SELECT ACCOUNT_BALANCE FROM ACCOUNTS WHERE ACCOUNT_ID= '" + alan + "' ";
+          ResultSet rs1 = st.executeQuery(sql4);
+          while (rs1.next()) {
+               firstaccountbalance = rs1.getDouble("ACCOUNT_BALANCE");
+               result = firstaccountbalance + miktar;
+
+          }
+          Statement stm6 = con.createStatement();
+          String sq15 = "UPDATE ACCOUNTS SET ACCOUNT_BALANCE =" + result + " WHERE ACCOUNT_ID='" + alan + "'    ";
           stm.executeUpdate(sq15);
      }
 
@@ -137,27 +140,25 @@ public class DetailDb {
      }
 
      public void payBill(String type, Double miktar, String account_id) throws SQLException {
-           double firstaccountbalance = 0;
-           double result = 0;
-           Connection con = Db.getInstance().getConnection();
-           Statement st = con.createStatement();
-           String sql1="SELECT ACCOUNT_BALANCE FROM ACCOUNTS WHERE ACCOUNT_ID= '" + account_id + "' ";
-           ResultSet rs = st.executeQuery(sql1);
-           while(rs.next()){
-           firstaccountbalance = rs.getDouble("ACCOUNT_BALANCE");
-           result = firstaccountbalance - miktar;
-           
-           }
-           Statement stm = con.createStatement();
-          String sql = "UPDATE ACCOUNTS SET ACCOUNT_BALANCE ="+result+" WHERE ACCOUNT_ID='"+account_id+"'    ";
+          double firstaccountbalance = 0;
+          double result = 0;
+          Connection con = Db.getInstance().getConnection();
+          Statement st = con.createStatement();
+          String sql1 = "SELECT ACCOUNT_BALANCE FROM ACCOUNTS WHERE ACCOUNT_ID= '" + account_id + "' ";
+          ResultSet rs = st.executeQuery(sql1);
+          while (rs.next()) {
+               firstaccountbalance = rs.getDouble("ACCOUNT_BALANCE");
+               result = firstaccountbalance - miktar;
+
+          }
+          Statement stm = con.createStatement();
+          String sql = "UPDATE ACCOUNTS SET ACCOUNT_BALANCE =" + result + " WHERE ACCOUNT_ID='" + account_id + "'    ";
           stm.executeUpdate(sql);
-           
-           
-           Statement stmt = con.createStatement();
-           String sql2 = "DELETE FROM BILLS WHERE BILLS.USER_ID = '" + Person.PersonInstance.getId() + "' and BILLS.TYPE = '" + type + "'AND BILLS.QUANTITY=" + miktar + "";
-           stmt.executeUpdate(sql2);
-           
-           
+
+          Statement stmt = con.createStatement();
+          String sql2 = "DELETE FROM BILLS WHERE BILLS.USER_ID = '" + Person.PersonInstance.getId() + "' and BILLS.TYPE = '" + type + "'AND BILLS.QUANTITY=" + miktar + "";
+          stmt.executeUpdate(sql2);
+
      }
 
      public boolean deleteAccount(String account_id) throws SQLException {
@@ -213,34 +214,64 @@ public class DetailDb {
           return balanceson;
 
      }
-     
-     
-     public void updatetotalbalance() throws SQLException{
-     double balance=calculator();
-       Connection con = Db.getInstance().getConnection();
-       Statement stmt=con.createStatement();
-     
-       String sql="UPDATE USERS SET TOTALBALANCE ="+balance+"  WHERE ID='"+Person.PersonInstance.getId()+"'";
-       stmt.executeUpdate(sql);
-        
+
+     public void updatetotalbalance() throws SQLException {
+          double balance = calculator();
+          Connection con = Db.getInstance().getConnection();
+          Statement stmt = con.createStatement();
+
+          String sql = "UPDATE USERS SET TOTALBALANCE =" + balance + "  WHERE ID='" + Person.PersonInstance.getId() + "'";
+          stmt.executeUpdate(sql);
 
      }
-     
-     public void updateBills(double miktar) throws SQLException{
-         double totalbalance = 0;
-         double result = 0;
-         Connection con = Db.getInstance().getConnection();
-         Statement st = con.createStatement();
+
+     public void updateBills(double miktar) throws SQLException {
+          double totalbalance = 0;
+          double result = 0;
+          Connection con = Db.getInstance().getConnection();
+          Statement st = con.createStatement();
           ResultSet rs = st.executeQuery("SELECT TOTALBALANCE FROM USERS WHERE ID = '" + Person.PersonInstance.getId() + "'");
-          while(rs.next()){
-                totalbalance = rs.getDouble("TOTALBALANCE");
-                result = totalbalance - miktar;
+          while (rs.next()) {
+               totalbalance = rs.getDouble("TOTALBALANCE");
+               result = totalbalance - miktar;
           }
-          
+
           Statement stmt = con.createStatement();
-          String sql = "UPDATE USERS SET TOTALBALANCE ="+result+" WHERE ID='"+Person.PersonInstance.getId()+"'    ";
+          String sql = "UPDATE USERS SET TOTALBALANCE =" + result + " WHERE ID='" + Person.PersonInstance.getId() + "'    ";
           stmt.executeUpdate(sql);
      }
-     
-     
+
+     public void kredibasvurusu(String account_id, double miktar) throws SQLException {
+          Connection con = Db.getInstance().getConnection();
+          Utils util = new Utils();
+          double firstaccountbalance = 0;
+          double result = 0;
+
+          String sql = "INSERT INTO APPLICATIONS VALUES(?,?,?,?,?)";
+
+          PreparedStatement ps = con.prepareStatement(sql);
+          ps.setString(1, util.generateUUID());
+          ps.setString(2, Person.PersonInstance.getId());
+          java.util.Date date = new java.util.Date();
+          java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+          ps.setDate(3, sqlDate);
+          ps.setDouble(4, miktar);
+          ps.setInt(5, 1);
+
+          ps.executeUpdate();
+
+          Statement st = con.createStatement();
+          String sql1 = "SELECT ACCOUNT_BALANCE FROM ACCOUNTS WHERE ACCOUNT_ID= '" + account_id + "' ";
+          ResultSet rs = st.executeQuery(sql1);
+          while (rs.next()) {
+               firstaccountbalance = rs.getDouble("ACCOUNT_BALANCE");
+               result = firstaccountbalance + miktar;
+
+          }
+          Statement stm = con.createStatement();
+          String sql2 = "UPDATE ACCOUNTS SET ACCOUNT_BALANCE =" + result + " WHERE ACCOUNT_ID='" + account_id + "'    ";
+          stm.executeUpdate(sql2);
+
+     }
+
 }

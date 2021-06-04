@@ -7,11 +7,13 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      >
 
      <h:head>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
-             <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+          <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -100,13 +102,13 @@ and open the template in the editor.
      </h:head>
      <h:body>
 
-          
-        <ui:insert name = "sidenav" >
+
+          <ui:insert name = "sidenav" >
 
                <ui:include src = "/templates/sidebar.xhtml" />
 
           </ui:insert> 
-          
+
 
           <div class="main">
                <ui:insert name ="navbar">
@@ -162,7 +164,7 @@ and open the template in the editor.
 
                                         <div class="input-group mb-3">
                                              <p>TOPLAM BORCUNUZ:
-                                           <h:dataTable value="#{billcontroller.getBillAmountbyType('TV')}" var="billtype" >
+                                                  <h:dataTable value="#{billcontroller.getBillAmountbyType('TV')}" var="billtype" >
 
                                                        <h:column>
                                                             <p>#{billtype.sumquantity}</p>
@@ -170,15 +172,15 @@ and open the template in the editor.
                                                   </h:dataTable></p>
                                              <h:dataTable value="#{detail.billandbalance('TV')}" var="billbalance">
                                                   <h:column>
-                                                      <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
-                                                              <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" ></h:inputText> 
-                                                               <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('TV')}"
-                                                                                  
+                                                       <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" a:placeholder="miktarı giriniz" ></h:inputText> 
+                                                                 <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" a:placeholder="ödenecek hesap id'si" ></h:inputText> 
+                                                                 <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('TV')}"
+
                                                                                   ></h:commandButton>
 
                                                             </h:form>
                                                        </p> 
-                                                         <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
+                                                       <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
                                                   </h:column>
 
                                              </h:dataTable>
@@ -199,7 +201,7 @@ and open the template in the editor.
                                    <div class="card card-body">
                                         <div class="input-group mb-3">
                                              <p>TOPLAM BORCUNUZ:
-                                                 <h:dataTable value="#{billcontroller.getBillAmountbyType('TELEFON')}" var="billtype" >
+                                                  <h:dataTable value="#{billcontroller.getBillAmountbyType('TELEFON')}" var="billtype" >
 
                                                        <h:column>
                                                             <p>#{billtype.sumquantity}</p>
@@ -207,15 +209,15 @@ and open the template in the editor.
                                                   </h:dataTable></p>
                                              <h:dataTable value="#{detail.billandbalance('TELEFON')}" var="billbalance">
                                                   <h:column>
-                                                      <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
-                                                              <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" ></h:inputText> 
-                                                               <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('TELEFON')}"
-                                                                                  
+                                                       <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
+                                                                 <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" a:placeholder="ödenecek hesap id'si"></h:inputText> 
+                                                                 <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('TELEFON')}"
+
                                                                                   ></h:commandButton>
 
                                                             </h:form>
                                                        </p> 
-                                                         <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
+                                                       <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
                                                   </h:column>
 
                                              </h:dataTable>
@@ -235,24 +237,24 @@ and open the template in the editor.
                                              <p>TOPLAM BORCUNUZ: </p>
                                              <h:dataTable value="#{billcontroller.getBillAmountbyType('INTERNET')}" var="billtype" >
 
-                                                       <h:column>
-                                                            <p>#{billtype.sumquantity}</p>
-                                                       </h:column>
-                                                  </h:dataTable><p>
-                                             <h:dataTable value="#{detail.billandbalance('INTERNET')}" var="billbalance">
                                                   <h:column>
-                                                      <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
-                                                              <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" ></h:inputText> 
-                                                               <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('INTERNET')}"
-                                                                                  
-                                                                                  ></h:commandButton>
-
-                                                            </h:form>
-                                                       </p> 
-                                                         <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
+                                                       <p>#{billtype.sumquantity}</p>
                                                   </h:column>
+                                             </h:dataTable><p>
+                                                  <h:dataTable value="#{detail.billandbalance('INTERNET')}" var="billbalance">
+                                                       <h:column>
+                                                            <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
+                                                                      <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" a:placeholder="ödenecek hesap id'si" ></h:inputText> 
+                                                                      <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('INTERNET')}"
 
-                                             </h:dataTable>
+                                                                                       ></h:commandButton>
+
+                                                                 </h:form>
+                                                            </p> 
+                                                            <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
+                                                       </h:column>
+
+                                                  </h:dataTable>
                                              </p>
                                         </div>
 
@@ -269,24 +271,24 @@ and open the template in the editor.
                                              <p>TOPLAM BORCUNUZ: </p>
                                              <h:dataTable value="#{billcontroller.getBillAmountbyType('ELEKTRIK')}" var="billtype" >
 
-                                                       <h:column>
-                                                            <p>#{billtype.sumquantity}</p>
-                                                       </h:column>
-                                                  </h:dataTable><p>
-                                             <h:dataTable value="#{detail.billandbalance('ELEKTRIK')}" var="billbalance">
                                                   <h:column>
-                                                      <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
-                                                              <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" ></h:inputText> 
-                                                               <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('ELEKTRIK')}"
-                                                                                  
-                                                                                  ></h:commandButton>
-
-                                                            </h:form>
-                                                       </p> 
-                                                         <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
+                                                       <p>#{billtype.sumquantity}</p>
                                                   </h:column>
+                                             </h:dataTable><p>
+                                                  <h:dataTable value="#{detail.billandbalance('ELEKTRIK')}" var="billbalance">
+                                                       <h:column>
+                                                            <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
+                                                                      <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" a:placeholder="ödenecek hesap id'si"></h:inputText> 
+                                                                      <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('ELEKTRIK')}"
 
-                                             </h:dataTable>
+                                                                                       ></h:commandButton>
+
+                                                                 </h:form>
+                                                            </p> 
+                                                            <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
+                                                       </h:column>
+
+                                                  </h:dataTable>
                                              </p>   
                                         </div>
 
@@ -304,24 +306,24 @@ and open the template in the editor.
                                              <p>TOPLAM BORCUNUZ: </p>
                                              <h:dataTable value="#{billcontroller.getBillAmountbyType('DOGALGAZ')}" var="billtype" >
 
-                                                       <h:column>
-                                                            <p>#{billtype.sumquantity}</p>
-                                                       </h:column>
-                                                  </h:dataTable><p>
-                                             <h:dataTable value="#{detail.billandbalance('DOGALGAZ')}" var="billbalance">
                                                   <h:column>
-                                                      <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
-                                                              <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" ></h:inputText> 
-                                                               <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('DOGALGAZ')}"
-                                                                                  
-                                                                                  ></h:commandButton>
-
-                                                            </h:form>
-                                                       </p> 
-                                                         <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
+                                                       <p>#{billtype.sumquantity}</p>
                                                   </h:column>
+                                             </h:dataTable><p>
+                                                  <h:dataTable value="#{detail.billandbalance('DOGALGAZ')}" var="billbalance">
+                                                       <h:column>
+                                                            <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
+                                                                      <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" a:placeholder="ödenecek hesap id'si" ></h:inputText> 
+                                                                      <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('DOGALGAZ')}"
 
-                                             </h:dataTable>
+                                                                                       ></h:commandButton>
+
+                                                                 </h:form>
+                                                            </p> 
+                                                            <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
+                                                       </h:column>
+
+                                                  </h:dataTable>
                                              </p> 
                                         </div>
 
@@ -339,7 +341,7 @@ and open the template in the editor.
 
                                         <div class="input-group mb-3">
                                              <p>TOPLAM BORCUNUZ:
-                                             <h:dataTable value="#{billcontroller.getBillAmountbyType('SU')}" var="billtype" >
+                                                  <h:dataTable value="#{billcontroller.getBillAmountbyType('SU')}" var="billtype" >
 
                                                        <h:column>
                                                             <p>#{billtype.sumquantity}</p>
@@ -347,15 +349,15 @@ and open the template in the editor.
                                                   </h:dataTable></p> 
                                              <h:dataTable value="#{detail.billandbalance('SU')}" var="billbalance">
                                                   <h:column>
-                                                      <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
-                                                              <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" ></h:inputText> 
-                                                               <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('SU')}"
-                                                                                  
+                                                       <p> <h:form><h:inputText class ="un" id="miktar" value="#{personcontroller.miktar}" ></h:inputText> 
+                                                                 <h:inputText class ="un" id="hesapadi" value="#{personcontroller.account_id}" a:placeholder="ödenecek hesap id'si"></h:inputText> 
+                                                                 <h:commandButton class="ode" value="öde" action="#{personcontroller.payBill('SU')}"
+
                                                                                   ></h:commandButton>
 
                                                             </h:form>
                                                        </p> 
-                                                         <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
+                                                       <br></br> <i class ="balance">Kalan bakiyeniz: #{billbalance.totalbalance}</i>
                                                   </h:column>
 
                                              </h:dataTable>
@@ -364,15 +366,15 @@ and open the template in the editor.
                                    </div>
                               </div>
                          </div>
-              </div>
-</div>
-                 <ui:insert name = "footer" >
+                    </div>
+               </div>
+               <ui:insert name = "footer" >
 
-               <ui:include src = "/templates/footer.xhtml" />
+                    <ui:include src = "/templates/footer.xhtml" />
 
-          </ui:insert> 
+               </ui:insert> 
           </div>
-                       
+
      </h:body>
 
 

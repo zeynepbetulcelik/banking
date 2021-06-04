@@ -128,4 +128,12 @@ public class Personcontroller {
                 detaildb.transferBalance(alan,account_id, miktar);
                 return "insidetransfer";
             }
+            
+            public String CreditApplication() throws SQLException{
+            detaildb.kredibasvurusu(account_id, miktar);
+            return "creditApplication";
+            }
+            
+            
+            
         }
