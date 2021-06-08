@@ -1,16 +1,11 @@
 package model;
 
-import entity.Account;
 import entity.Person;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.sql.rowset.CachedRowSet;
 import util.Db;
@@ -58,6 +53,21 @@ public class DetailDb {
           Statement stm6 = con.createStatement();
           String sq15 = "UPDATE ACCOUNTS SET ACCOUNT_BALANCE =" + result + " WHERE ACCOUNT_ID='" + alan + "'    ";
           stm.executeUpdate(sq15);
+          Statement stm7= con.createStatement();
+          String sq16 ="INSERT INTO TRANSECTION_HISTORY VALUES(?,?,?,?)";
+          try {
+              PreparedStatement ps15 = con.prepareStatement(sq16);
+               ps15.setString(1, util.Utils.generateUUID());
+               ps15.setString(2, alan);
+               ps15.setDouble(3, miktar);
+               ps15.setString(4, gonderen);
+              
+
+               ps15.executeUpdate();
+
+          }catch (SQLException e) {
+               System.out.println(e.getMessage());
+          }
      }
 
      public ResultSet getCreditCards() throws SQLException {
