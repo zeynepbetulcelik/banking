@@ -72,7 +72,7 @@ and open the template in the editor.
                     width: 200px;
                     height: 36px;
                     border-radius: 18px;
-                    background-color: #1c89ff;
+                    background-color: #000;
                     border: solid 1px transparent;
                     color: #fff;
                     font-size: 18px;
@@ -102,8 +102,8 @@ and open the template in the editor.
                <ui:insert name ="navbar">
                     <ui:include src = "/templates/navbar.xhtml" />
                </ui:insert> 
-
-               <h:form style="padding-right: 800px;">
+               <div class="card mt-5 w-110" style="background-color:transparent; width: 500px; justify-content: center;"> 
+               <h:form style="">
                     <div class="form-group">
                          <label for="exampleInputEmail1" style="padding-right: 500px;">Hesap-ID</label>
                          <h:inputText  class="form-control" id="exampleInputEmail1" value="#{personcontroller.account_id}"></h:inputText>
@@ -128,7 +128,7 @@ and open the template in the editor.
 
                                      ></h:commandButton>
                </h:form>
-
+               </div>
                <ui:insert name = "footer" >
 
                     <ui:include src = "/templates/footer.xhtml" />

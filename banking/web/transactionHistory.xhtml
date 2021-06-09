@@ -8,92 +8,118 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    
-    <h:head>
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
+
+     <h:head>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
           <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
-       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
- <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
- <script>
-</script>
- <style>
-  body {
-  font-family: "Lato", sans-serif;
-}
+          <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <script>
+          </script>
+          <style>
+               body {
+                    font-family: "Lato", sans-serif;
+               }
 
-.sidenav {
-    
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 20px;
-  
-}
+               .sidenav {
 
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
+                    height: 100%;
+                    width: 250px;
+                    position: fixed;
+                    z-index: 1;
+                    top: 0;
+                    left: 0;
+                    background-color: #111;
+                    overflow-x: hidden;
+                    padding-top: 20px;
 
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-.sidenav h3{
-    color: #ffffff;
- display:flex;
- justify-content: center;
-  
-}
+               }
+
+               .sidenav a {
+                    padding: 6px 8px 6px 16px;
+                    text-decoration: none;
+                    font-size: 25px;
+                    color: #818181;
+                    display: block;
+               }
+
+               .sidenav a:hover {
+                    color: #f1f1f1;
+               }
+               .sidenav h3{
+                    color: #ffffff;
+                    display:flex;
+                    justify-content: center;
+
+               }
 
 
-.main {
-  margin-left: 250px; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
+               .main {
+                    margin-left: 250px; /* Same as the width of the sidenav */
+                    font-size: 28px; /* Increased text to enable scrolling */
+                    padding: 0px 10px;
+               }
 
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 15px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
-</h:head>
-<body>
+               @media screen and (max-height: 450px) {
+                    .sidenav {padding-top: 15px;}
+                    .sidenav a {font-size: 18px;}
+               }
+          </style>
+     </h:head>
+     <body>
 
-        <ui:insert name = "sidenav" >
+          <ui:insert name = "sidenav" >
 
                <ui:include src = "/templates/sidebar.xhtml" />
 
           </ui:insert> 
-          
+
           <div class="main">
                <ui:insert name ="navbar">
                     <ui:include src = "/templates/navbar.xhtml" />
                </ui:insert> 
-  <h2>Sidebar</h2>
-  <p>This sidebar is of full height (100%) and always shown.</p>
-  <p>Scroll down the page to see the result.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-  <p>Some text to enable scrolling.. Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-<ui:insert name = "footer" >
 
-               <ui:include src = "/templates/footer.xhtml" />
+               <h:dataTable value="#{detail.gettransaction()}" var="history"> 
 
-          </ui:insert></div>
-   
-</body>
+                                                  
+                                                       <h:column>
+
+                                                            <h:form class="form-group">
+
+                                                                 <div class="card mt-5 w-110" style="background-color: #111; overflow: auto; width: 300px;">
+                                                                      <div class="card-header">
+                                                                           <p  class="card-text text-secondary lead font-weight-bold"> Gönderen Hesap ismi #{history.ACCOUNT_NAME}</p>
+                                                                      </div>
+                                                                      <div class="card-body mt-2">
+                                                                           <p  class="card-text text-secondary lead font-weight-bold"> Kalan Bakiyeniz: #{history.ACCOUNT_BALANCE}</p>
+                                                                      </div>
+                                                                      <div class="card-body mt-2">
+                                                                           <p  class="card-text text-secondary lead font-weight-bold"> Gönderen Kişi ID: #{history.ACCOUNT_USER_ID}</p>
+                                                                      </div>
+                                                                      <div class="card-footer" style="background-color: #111;">
+                                                                           <p  class="card-text text-secondary lead font-weight-bold"></p>
+                                                                      </div>
+                                                                 </div>
+
+                                                            </h:form>
+
+
+                                                       </h:column>
+                                              
+
+                                             </h:dataTable> 
+
+
+
+               <ui:insert name = "footer" >
+
+                    <ui:include src = "/templates/footer.xhtml" />
+
+               </ui:insert></div>
+
+     </body>
 
 
 </html>

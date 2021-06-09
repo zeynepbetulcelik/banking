@@ -54,13 +54,15 @@ public class DetailDb {
           String sq15 = "UPDATE ACCOUNTS SET ACCOUNT_BALANCE =" + result + " WHERE ACCOUNT_ID='" + alan + "'    ";
           stm.executeUpdate(sq15);
           Statement stm7= con.createStatement();
-          String sq16 ="INSERT INTO TRANSECTION_HISTORY VALUES(?,?,?,?)";
+          String sq16 ="INSERT INTO TRANSACTION_HISTORY VALUES(?,?,?,?,?)";
           try {
               PreparedStatement ps15 = con.prepareStatement(sq16);
                ps15.setString(1, util.Utils.generateUUID());
+              
                ps15.setString(2, alan);
                ps15.setDouble(3, miktar);
                ps15.setString(4, gonderen);
+                 ps15.setString(5, Person.PersonInstance.getId());
               
 
                ps15.executeUpdate();
@@ -74,6 +76,15 @@ public class DetailDb {
           Connection con = Db.getInstance().getConnection();
           String sql = "select *  from CREDIT_CARDS INNER JOIN USERS ON USERS.ID = CREDIT_CARDS.USER_ID where CREDIT_CARDS.USER_ID = '" + Person.PersonInstance.getId() + "'";
           PreparedStatement object1 = con.prepareStatement(sql);
+          CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
+          resultSet1.populate(object1.executeQuery());
+          return resultSet1;
+
+     } public ResultSet gettransaction() throws SQLException {
+          Connection con = Db.getInstance().getConnection();
+          String account_id;
+          String sql = "select * from TRANSACTION_HISTORY INNER JOIN ACCOUNTS ON ACCOUNTS.ACCOUNT_ID=TRANSACTION_HISTORY.SENDER_ACCOUNT where USER_ID = '" + Person.PersonInstance.getId() + "'";
+         PreparedStatement object1 = con.prepareStatement(sql);
           CachedRowSet resultSet1 = new com.sun.rowset.CachedRowSetImpl();
           resultSet1.populate(object1.executeQuery());
           return resultSet1;

@@ -7,8 +7,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
      <h:head>
-         
-        
+
+
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"></link>
           <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -19,7 +19,7 @@
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
           <link rel="stylesheet" type="text/css" href="/templates/sidebar.css"></link>
           <style>
-              
+
                .sidenav {
 
                     height: 100%;
@@ -74,25 +74,26 @@
                     text-align: center;
                     background: #000;
                     padding-right:100px;
-                   padding-left: 100px;
+                    padding-left: 100px;
 
                }
                .insideCircle{
-                   position: absolute;
-            margin: auto;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+                    position: absolute;
+                    margin: auto;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
                }
-            
+
                .circlecontainer{
                     padding-left: 300px; 
-                      text-align: center;
+                    text-align: center;
                }
                .circle:hover{
                     color: #ffffff; 
                }
+               h3 {text-align: center;}
           </style>
 
 
@@ -108,33 +109,33 @@
 
 
           <div class="main">
-<ui:insert name ="navbar">
+               <ui:insert name ="navbar">
                     <ui:include src = "/templates/navbar.xhtml" />
                </ui:insert>
 
-               <div id="top_links">
+               <div id="top_links" style="padding-right:600px;">
+                    <h:dataTable value="#{detail.getUserInfo()}" var="user">
+                         <h:column>
+                              <h3 style="padding-left:200px">Hoşgeldiniz Sayın #{user.USERNAME}</h3>
+                              <div class="circlecontainer" >
 
+                                   <div class="circle"  >
+                                        <span class="insideCircle">
+                                             <div class="totalbalance" style="padding-top:500px; padding-left:265px"> 
+                                             <h2 style="">TOTAL BALANCE</h2> 
+                                             <p id="countUp">#{user.TOTALBALANCE}</p>    
+                                        </div>
 
-                    <div class="circlecontainer">
+                                        </span>
+                                   </div>
+                              </div></h:column> 
+                    </h:dataTable> 
+                    <ui:insert name = "footer" >
 
-                         <div class="circle" >
-                             <span class="insideCircle">
-                              <h:dataTable value="#{detail.userInfo}" var="user">
-                                   <h:column>
-                                        <h2 style="padding-top:40px">TOTAL BALANCE</h2> 
-                                        <p id="countUp">#{user.TOTALBALANCE}</p>    
-                                          
-                                   </h:column> 
-                              </h:dataTable>    
-                         </span>
-                         </div>
-                    </div>
-                <ui:insert name = "footer" >
+                         <ui:include src = "/templates/footer.xhtml" />
 
-               <ui:include src = "/templates/footer.xhtml" />
+                    </ui:insert> 
 
-          </ui:insert> 
-                    
 
                </div>
 
